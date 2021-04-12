@@ -6,7 +6,7 @@ namespace RapportModule
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, this is Wouter here. Test2.);
+            Console.WriteLine("Hello, this is Wouter here. Test2.");
         }
     }
 }
