@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RapportModule
+namespace Nummers
 {
     class Program
     {
