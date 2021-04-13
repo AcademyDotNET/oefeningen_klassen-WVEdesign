@@ -6,7 +6,9 @@ namespace RapportModule
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("good morning, test 13/4, this is Wouter here. ");
+            Resultaat mijnPunten = new Resultaat();
+            mijnPunten.Percentage = 65;
+            mijnPunten.PrintGraad();
         }
     }
 }
