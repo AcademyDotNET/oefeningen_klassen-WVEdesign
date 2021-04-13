@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Nummers
 {
-    class Nummers
+    class Nummers //handboek pagina 76
     {
         public int Getal1 { get; set; }
         public int Getal2 { get; set; }
@@ -13,16 +13,21 @@ namespace Nummers
         {
 
         }
-        public void Paar1()
+        public int Som()
         {
-            if (Getal1 < Getal2)
-            {
-                Console.WriteLine("num1 kleiner dan num2");
-            }
-            else if (Getal1 >= Getal2)
-            {
-                Console.WriteLine("num1 groter dan num2");
-            }
+            return (int)Getal1 + Getal2;
+        }
+        public int Verschil()
+        {
+            return (int)Getal1 - Getal2;
+        }
+        public int Product()
+        {
+            return (int)Getal1 * Getal2;
+        }
+        public double Quotient()
+        {
+            return (double)Getal1 / Getal2;
         }
     }
 }
