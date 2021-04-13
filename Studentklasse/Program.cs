@@ -7,7 +7,8 @@ namespace Studentklasse
         static void Main(string[] args)
         {
             Student student1 = new Student();
-            
+
+            student1.KlasLokaal(KlasLokaal.EA1);
             student1.Naam("Wouter");
             student1.Leeftijd(40);
             student1.PuntenComm(68);

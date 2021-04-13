@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Studentklasse // Handboek1 pagina 71
 {
-    public enum KlasLokaal 
+    public enum KlasLokaal
     {
-        EA1 = 0,
-        EA2 = 0,
-        EA3 = 0,
-        EA4 = 0,
-        EA5 = 0,
-        EA6 = 0
+        EA1,
+        EA2,
+        EA3,
+        EA4,
+        EA5,
+        EA6
     };
     class Student
     {
-        
+        public KlasLokaal klas;
         public string studentNaam;
         public int leeftijd;
         public int pComm;
@@ -26,6 +26,11 @@ namespace Studentklasse // Handboek1 pagina 71
 
         }
         // set //
+        public void KlasLokaal(KlasLokaal v)
+        {
+            klas = v;
+        }
+
         internal void Naam(string v)
         {
             studentNaam = v;
@@ -50,17 +55,9 @@ namespace Studentklasse // Handboek1 pagina 71
 
 
         /// get /////
-        private string KlasLokaal()
+        public KlasLokaal GetKlasLokaal()
         {
-            
-            {
-                foreach (var item in Enum.GetNames(typeof(KlasLokaal)))
-                {
-                    Console.WriteLine(item);
-                    return item;
-                }
-                return "error";
-            }
+            return klas;
         }
 
         public string GetNaam()
@@ -92,7 +89,7 @@ namespace Studentklasse // Handboek1 pagina 71
                 $"\npunten communicatie: {GetPuntenCommunicatie()}" +
                 $"\npunten programmeren: {GetPuntenProgrammingPrinciples()}" +
                 $"\npunten webtechnologie: {GetPuntenWebTech()}" +
-                $"\nklaslokaal: {KlasLokaal()}" +
+                $"\nklaslokaal: {GetKlasLokaal()}" +
                 $" ");
         }
     }
