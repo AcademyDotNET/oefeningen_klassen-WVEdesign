@@ -32,7 +32,7 @@ namespace Nummers
             }
             else if (Percentage >= 85)
             {
-                Console.WriteLine(">= 85: grootste onderscheiding");
+                Console.WriteLine(">= 85: grootste onderscheiding, fantastisch!");
             }
         }
     }
