@@ -6,32 +6,9 @@ namespace Pokemon
     {
         static void Main(string[] args)
         {
-            Pokemon ratata = new Pokemon();
-            Pokemon weedle = new Pokemon();
-            Pokemon kakuna = new Pokemon();
-
-            ratata.HP_Base = 30;
-            ratata.Attack_Base = 10;
-            ratata.Defense_Base = 10;
-            ratata.SpecialAttack_Base = 24;
-            ratata.SpecialDefense_Base = 17;
-            ratata.Speed_Base = 80;
-
-            weedle.HP_Base = 55;
-            weedle.Attack_Base = 16;
-            weedle.Defense_Base = 18;
-            weedle.SpecialAttack_Base = 64;
-            weedle.SpecialDefense_Base = 37;
-            weedle.Speed_Base = 8;
-
-            kakuna.HP_Base = 15;
-            kakuna.Attack_Base = 33;
-            kakuna.Defense_Base = 90;
-            kakuna.SpecialAttack_Base = 30;
-            kakuna.SpecialDefense_Base = 11;
-            kakuna.Speed_Base = 21;
-
-            Console.WriteLine(ratata.HP_FULL);
+            Pokemon ratata = GeneratorPokemon("ratata");
+            Pokemon weedle = GeneratorPokemon2();
+            Pokemon kakuna = GeneratorPokemon2();
 
             PrintPokemonStats(ratata);
             PrintPokemonStats(weedle);
@@ -53,6 +30,38 @@ namespace Pokemon
             ratata.ShowInfo();
             weedle.ShowInfo();
             kakuna.ShowInfo();
+
+        }
+        // optie1
+        private static Pokemon GeneratorPokemon(string naam)
+        {
+            Pokemon pokemonNewName = new Pokemon();
+            Random pokemonR = new Random();
+
+            pokemonNewName.Naam = naam;
+            pokemonNewName.HP_Base = pokemonR.Next(0,101);
+            pokemonNewName.Attack_Base = pokemonR.Next(0, 101);
+            pokemonNewName.Defense_Base = pokemonR.Next(0, 101);
+            pokemonNewName.SpecialAttack_Base = pokemonR.Next(0, 101);
+            pokemonNewName.SpecialDefense_Base = pokemonR.Next(0, 101);
+            pokemonNewName.Speed_Base = pokemonR.Next(0, 101);
+
+            return pokemonNewName;
+        }
+        // optie2
+        private static Pokemon GeneratorPokemon2()
+        {
+            Pokemon pokemonNewName = new Pokemon();
+            Random pokemonR = new Random();
+
+            pokemonNewName.HP_Base = pokemonR.Next(0, 101);
+            pokemonNewName.Attack_Base = pokemonR.Next(0, 101);
+            pokemonNewName.Defense_Base = pokemonR.Next(0, 101);
+            pokemonNewName.SpecialAttack_Base = pokemonR.Next(0, 101);
+            pokemonNewName.SpecialDefense_Base = pokemonR.Next(0, 101);
+            pokemonNewName.Speed_Base = pokemonR.Next(0, 101);
+
+            return pokemonNewName;
         }
 
         private static void PrintPokemonStats(Pokemon pokemonNaam)
