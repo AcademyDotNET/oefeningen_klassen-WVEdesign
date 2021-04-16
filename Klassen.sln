@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bankmanager", "Bankmanager\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meetlat", "Meetlat\Meetlat.csproj", "{CC7759F9-FBFD-41F4-AB8D-F0BE8FAD3767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon", "Pokemon\Pokemon.csproj", "{847B9723-BA08-4B51-AD4C-0F6195DE94BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokemon", "Pokemon\Pokemon.csproj", "{847B9723-BA08-4B51-AD4C-0F6195DE94BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon_Deel3_BattleTester", "Pokemon_Deel3_BattleTester\Pokemon_Deel3_BattleTester.csproj", "{6D5B57F7-B0AB-4E63-AF0D-DB9C5296D8F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{847B9723-BA08-4B51-AD4C-0F6195DE94BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{847B9723-BA08-4B51-AD4C-0F6195DE94BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{847B9723-BA08-4B51-AD4C-0F6195DE94BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5B57F7-B0AB-4E63-AF0D-DB9C5296D8F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5B57F7-B0AB-4E63-AF0D-DB9C5296D8F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5B57F7-B0AB-4E63-AF0D-DB9C5296D8F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5B57F7-B0AB-4E63-AF0D-DB9C5296D8F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
