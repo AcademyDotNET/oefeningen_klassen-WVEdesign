@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pokemon_Deel3_BattleTester
+namespace Pokemon_Deel1_3_BattleTester
 {
     class Pokemon
     {
@@ -182,7 +182,7 @@ namespace Pokemon_Deel3_BattleTester
 
         public void VerhoogLevel()
         {
-            //level ++;
+            //level ++;   dit is de rechtsstreekse variabelen, niet veilig om rechtsstreeks aan te spreken, daarom Level met een hoofdletter
             Level++;
         }
         public void ShowInfo()
@@ -193,8 +193,6 @@ namespace Pokemon_Deel3_BattleTester
             Console.WriteLine($"* Speed = {Speed_Base}");
             Console.WriteLine("Full stats:");
             Console.WriteLine($"* Health = {HP_FULL}");
-
-
         }
     }
 }
