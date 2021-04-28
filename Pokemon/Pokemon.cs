@@ -6,6 +6,8 @@ namespace Pokemon
 {
     class Pokemon
     {
+       // 6 properties and 6 
+
         //HP_Base
         //Attack_Base
         //Defense_Base
@@ -51,7 +53,6 @@ namespace Pokemon
             }
         }
 
-        
         public int HP_Base
         {
             get
