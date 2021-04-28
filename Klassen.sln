@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTime_test", "DateTime_t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wouter_test01", "Wouter_test01\Wouter_test01.csproj", "{A9CD5AD4-FC4C-4889-9965-B66B3FCD73FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces_diskwriter example", "Interfaces_diskwriter example\Interfaces_diskwriter example.csproj", "{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{A9CD5AD4-FC4C-4889-9965-B66B3FCD73FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9CD5AD4-FC4C-4889-9965-B66B3FCD73FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9CD5AD4-FC4C-4889-9965-B66B3FCD73FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
