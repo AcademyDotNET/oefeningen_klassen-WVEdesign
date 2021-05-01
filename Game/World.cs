@@ -70,6 +70,5 @@ namespace Game_map_and_player
                 return false;
             }
         }
-
     }
 }

@@ -24,10 +24,6 @@ namespace Game_map_and_player
             Console.SetCursorPosition(X,Y);
             Console.Write(PlayerAvatar);
             Console.ResetColor();
-
-
         }
-
-
     }
 }

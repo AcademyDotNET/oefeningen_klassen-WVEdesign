@@ -8,13 +8,11 @@ namespace Game_map_and_player
     {
         static void Main(string[] args)
         {
-
             Game currentGame = new Game();
             currentGame.Start();
            
             //charmap windows font consolas
             //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝");
-
         }
     }
 }

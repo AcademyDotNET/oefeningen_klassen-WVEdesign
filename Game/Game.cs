@@ -11,10 +11,8 @@ namespace Game_map_and_player
         private Player CurrentPlayer;
         public void Start()
         {
-            WriteLine("Game is starting");
-
+            //WriteLine("Game is starting");
             Console.Title = "Wouter's Game of Happy Evil Monsters";
-
 
             string[,] grid =
             {
@@ -56,13 +54,11 @@ namespace Game_map_and_player
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
             Console.WriteLine("WELKOM op Wouter's HAPPY Evil game");
-            Console.WriteLine("Probeer met de pijltjes ← ↑ → op uw keyboard Mr. ☺ de overkant te laten bereiken..");
+            Console.WriteLine("Probeer met de pijltjes ↔ ↕ op uw keyboard Mr. ☺ de overkant te laten bereiken..");
             Console.WriteLine("Druk op een toets om het spel te starten.");
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
-
-
         }
         private void displayOutro()
         {
@@ -73,17 +69,10 @@ namespace Game_map_and_player
             Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
             Console.ReadKey(true);
         }
-        //SetCursorPosition(4, 2);
-        //Write("☺");
-
-        //WriteLine("\n\nPress any key to exit ...");
-        //ReadKey(true);
 
         private void DrawFrame()
         {
             Clear();
-
-
             MyWorld.Draw();
             CurrentPlayer.Draw();
         }
@@ -128,8 +117,6 @@ namespace Game_map_and_player
                     break;
             }
         }
-
-
         private void RunGameLoop()
         {
             displayIntro();
@@ -146,11 +133,9 @@ namespace Game_map_and_player
                 if (elementAtPlayerPos == "░")
                 {
                     break;
-
                 }
                 //5. Give Console time to render
                 System.Threading.Thread.Sleep(20);
-
             }
             displayOutro();
         }
