@@ -14,7 +14,7 @@ namespace Game_map_and_player
             WriteLine("Game is starting");
 
             Console.Title = "Wouter's Game of Happy Evil Monsters";
-            
+
 
             string[,] grid =
             {
@@ -59,16 +59,18 @@ namespace Game_map_and_player
             Console.WriteLine("Probeer met de pijltjes ← ↑ → op uw keyboard Mr. ☺ de overkant te laten bereiken..");
             Console.WriteLine("Druk op een toets om het spel te starten.");
             Console.ResetColor();
-           Console.ReadKey(true);
+            Console.ReadKey(true);
             Console.CursorVisible = false;
-            
-            
+
+
         }
         private void displayOutro()
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
-            Console.WriteLine("you have Won!");
-            Console.WriteLine("Druk op een toets om het spel te sluiten.");
+            Console.WriteLine("Proficiat, u heeft heelhuids Mr. ☺ aan de overkant gekregen, en zodus GEWONNEN !!!!!");
+            Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
             Console.ReadKey(true);
         }
         //SetCursorPosition(4, 2);
@@ -80,21 +82,26 @@ namespace Game_map_and_player
         private void DrawFrame()
         {
             Clear();
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-       
+
+
             MyWorld.Draw();
             CurrentPlayer.Draw();
         }
 
         private void HandlePlayerInput()
         {
-            ConsoleKeyInfo keyInfo = ReadKey(true);
-            ConsoleKey key = keyInfo.Key;
+            ConsoleKey key;
+            //ontdendering
+            do
+            {
+                ConsoleKeyInfo keyInfo = ReadKey(true);
+                key = keyInfo.Key;
+            } while (KeyAvailable);
+
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y-1))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y - 1))
                     {
                         CurrentPlayer.Y -= 1;
                     }
@@ -104,19 +111,19 @@ namespace Game_map_and_player
                     {
                         CurrentPlayer.Y += 1;
                     }
-                        break;
+                    break;
                 case ConsoleKey.LeftArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X-1, CurrentPlayer.Y))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X - 1, CurrentPlayer.Y))
                     {
                         CurrentPlayer.X -= 1;
                     }
-                        break;
+                    break;
                 case ConsoleKey.RightArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X+1, CurrentPlayer.Y))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X + 1, CurrentPlayer.Y))
                     {
                         CurrentPlayer.X += 1;
                     }
-                        break;
+                    break;
                 default:
                     break;
             }
@@ -128,20 +135,21 @@ namespace Game_map_and_player
             displayIntro();
             while (true)
             {
-                // Draw everything
+                //1. Draw everything
                 DrawFrame();
-                // Check input player + move avatar
+                //2. Check input player + move avatar
                 HandlePlayerInput();
-                // Check if game has to end
+                //3. let monsters move or shoot (TODO)
+
+                //4. Check if game has to end
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid
-                if(elementAtPlayerPos == "░")
+                if (elementAtPlayerPos == "░")
                 {
                     break;
-                    
-                }
 
-                // give Console time to render
-                    System.Threading.Thread.Sleep(20);
+                }
+                //5. Give Console time to render
+                System.Threading.Thread.Sleep(20);
 
             }
             displayOutro();

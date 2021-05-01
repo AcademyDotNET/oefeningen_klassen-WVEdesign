@@ -25,6 +25,26 @@ namespace Game_map_and_player
                 {
                     string element = Grid[y, x];
                     Console.SetCursorPosition(x, y);
+                    if (element == "☻")
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                    }
+                    else if (element == "⌂")
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else if (element == "░")
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    }
                     Console.Write(element);
                 }
             }
