@@ -1,5 +1,5 @@
 ﻿using System;
-//using System.Text;
+using System.Text;
 //using static System.Console;
 
 namespace Game_map_and_player
@@ -12,7 +12,7 @@ namespace Game_map_and_player
             currentGame.Start();
            
             //charmap windows font consolas
-            //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝");
+            Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝");
         }
     }
 }

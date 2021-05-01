@@ -9,33 +9,43 @@ namespace Game_map_and_player
     {
         private World MyWorld;
         private Player CurrentPlayer;
+        private Monster CurrentMonster;
+        private Monster CurrentMonster1;
+        private Monster CurrentMonster2;
+        private Monster CurrentMonster3;
+        private Monster CurrentMonster4;
+
+
+
+        public Random directionMonster = new Random();
+        
         public void Start()
         {
             //WriteLine("Game is starting");
-            Console.Title = "Wouter's Game of Happy Evil Monsters";
+            Console.Title = "Save Mr. Smiley of Happy Evil Monsters";
 
             string[,] grid =
             {
                 {"╔","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╗" },
+                {"║"," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," ","⌂"," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," ","⌂"," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," ","☻"," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," ","☻"," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," ","☻"," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," "," ","☻"," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," ","☻"," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," ","☻","☻"," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," ","☻"," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","☻"," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","⌂"," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"╚","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╝" },
             };
@@ -44,7 +54,13 @@ namespace Game_map_and_player
             MyWorld = new World(grid);
             //Player currentPlayer = new Player(2, 2);
             //currentPlayer.Draw();
-            CurrentPlayer = new Player(2, 2);
+            CurrentPlayer = new Player(1, 10);
+
+            CurrentMonster = new Monster(17, 10, "☻", ConsoleColor.Red);
+            CurrentMonster1 = new Monster(15, 12, "☻", ConsoleColor.Red);
+            CurrentMonster2 = new Monster(14, 17, "☻", ConsoleColor.Red);
+            CurrentMonster3 = new Monster(16, 10, "☻", ConsoleColor.Red);
+            CurrentMonster4 = new Monster(17, 13, "☻", ConsoleColor.Red);
 
             RunGameLoop();
         }
@@ -53,7 +69,7 @@ namespace Game_map_and_player
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
-            Console.WriteLine("WELKOM op Wouter's HAPPY Evil game");
+            Console.WriteLine("WELKOM op 'Save Mr. Smiley of Happy Evil Monsters' GAME");
             Console.WriteLine("Probeer met de pijltjes ↔ ↕ op uw keyboard Mr. ☺ de overkant te laten bereiken..");
             Console.WriteLine("Druk op een toets om het spel te starten.");
             Console.ResetColor();
@@ -62,10 +78,30 @@ namespace Game_map_and_player
         }
         private void displayOutro()
         {
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.Clear();
-            Console.WriteLine("Proficiat, u heeft heelhuids Mr. ☺ aan de overkant gekregen, en zodus GEWONNEN !!!!!");
+                for (int j = 0; j < 30; j++)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.Clear();
+
+                    // steam
+                    Console.Write("       . . . . o o o o o o");
+                    for (int s = 0; s < j / 2; s++)
+                    {
+                        Console.Write(" o");
+                    }
+                    Console.WriteLine();
+
+                    var margin = "".PadLeft(j);
+                    Console.WriteLine(margin + "                _____      o");
+                    Console.WriteLine(margin + "       ____====  ]OO|_n_n__][.");
+                    Console.WriteLine(margin + "      [________]_|__|________)< ");
+                    Console.WriteLine(margin + "       oo    oo  'oo OOOO-| oo\\_");
+                    Console.WriteLine("   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+");
+                    Console.WriteLine("\n\n\nProficiat, u heeft heelhuids Mr. ☺ aan de overkant gekregen, en zodus GEWONNEN !!!!!");
+                   
+                    System.Threading.Thread.Sleep(200); // was 20
+                }
             Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
             Console.ReadKey(true);
         }
@@ -75,6 +111,52 @@ namespace Game_map_and_player
             Clear();
             MyWorld.Draw();
             CurrentPlayer.Draw();
+            CurrentMonster.Draw();
+            CurrentMonster1.Draw();
+            CurrentMonster2.Draw();
+            CurrentMonster3.Draw();
+            CurrentMonster4.Draw();
+        }
+        private void HandleMonster()
+        {
+            int dir = directionMonster.Next(1, 5);
+            switch (dir)
+            {
+                case 1:
+                    {
+                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X, CurrentMonster.Y - 1))
+                        {
+                            CurrentMonster.Y -= 1;
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X, CurrentMonster.Y + 1))
+                        {
+                            CurrentMonster.Y += 1;
+                        }
+                        break;
+                    }
+                case 3:
+                    {
+                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X-1, CurrentMonster.Y))
+                        {
+                            CurrentMonster.X -= 1;
+                        }
+                        break;
+                    }
+                case 4:
+                    {
+                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X+1, CurrentMonster.Y))
+                        {
+                            CurrentMonster.X += 1;
+                        }
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
 
         private void HandlePlayerInput()
@@ -127,7 +209,7 @@ namespace Game_map_and_player
                 //2. Check input player + move avatar
                 HandlePlayerInput();
                 //3. let monsters move or shoot (TODO)
-
+                HandleMonster();
                 //4. Check if game has to end
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid
                 if (elementAtPlayerPos == "░")

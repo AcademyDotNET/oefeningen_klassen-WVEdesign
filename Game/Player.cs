@@ -16,7 +16,7 @@ namespace Game_map_and_player
             X = initialX;
             Y = initialY;
             PlayerAvatar = "☺";
-            PlayerColor = ConsoleColor.Red;
+            PlayerColor = ConsoleColor.DarkGreen;
         }
         public void Draw()
         {
