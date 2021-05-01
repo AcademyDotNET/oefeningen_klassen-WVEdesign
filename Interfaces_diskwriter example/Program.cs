@@ -13,6 +13,15 @@ namespace Interfaces_diskwriter_example
             //Ze(je andere klassen) kunnen gewoon blijven zeggen ReadData en WriteData en weten misschien zelfs niet dat hun data niet meer naar de HD maar 
             //naar het internet wordt gestuurd.Mooi toch!
 
+            // Aanpak: 1. Klasse 'DiskWriter' aanmaken 
+            //         2. Interface IData aanmaken
+            //         3. Interface implementeren in klasse; diskwriter : IData 
+            //         4. Program.cs, objecten initiëren
+
+            // -> sowieso apparte klasse InternetWriter aanmaken. 
+            // -> efficientie van Interfaces zit 'm vooral in het verdere gebruik van de methodes in uw program.cs, zoals bv in mogelijke for-loops. Dit zorgt 
+            //    ervoor dat er een minimaal extra aanpassingen vereist zijn bij het toevoegen van een extra functionaliteit als InternetWriter.
+
             //oude manier:
             diskwriter schrijverke1 = new diskwriter();
             InternetWriter schrijverke2 = new InternetWriter();

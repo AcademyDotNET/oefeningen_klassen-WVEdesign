@@ -45,13 +45,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UML2code_car_boat_Compositi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Politiek", "Politiek\Politiek.csproj", "{0BFD2441-E31A-47BB-8EEB-B856B673C448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cats", "Cats\Cats.csproj", "{7D1ABF2D-7EFD-4FD7-A26F-57FC8C8F6439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cats", "Cats\Cats.csproj", "{7D1ABF2D-7EFD-4FD7-A26F-57FC8C8F6439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTime_test", "DateTime_test\DateTime_test.csproj", "{297F319C-09EA-49F7-89ED-DAD26624F2F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateTime_test", "DateTime_test\DateTime_test.csproj", "{297F319C-09EA-49F7-89ED-DAD26624F2F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wouter_test01", "Wouter_test01\Wouter_test01.csproj", "{A9CD5AD4-FC4C-4889-9965-B66B3FCD73FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wouter_test01", "Wouter_test01\Wouter_test01.csproj", "{A9CD5AD4-FC4C-4889-9965-B66B3FCD73FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces_diskwriter example", "Interfaces_diskwriter example\Interfaces_diskwriter example.csproj", "{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces_diskwriter example", "Interfaces_diskwriter example\Interfaces_diskwriter example.csproj", "{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_map_and_player", "Game\Game_map_and_player.csproj", "{B8657575-E304-435B-B244-6CFAA4D5CED5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +161,10 @@ Global
 		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
