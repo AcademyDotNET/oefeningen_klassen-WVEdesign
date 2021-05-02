@@ -61,9 +61,29 @@ namespace Game_map_and_player
             // monsters
             foreach (Monster var in monsters)
             {
+                // monster op monsterplaats
                 if (var.X == x && var.Y == y)
                 {
                     return false;
+                }
+            }
+            foreach (Monster var in monsters)
+            {
+                // RockDestroyermonster vs rock
+                if (var.MonsterAvatar == "¤")
+                {
+                    if (Grid[var.Y, var.X - 1] == "⌂")
+                    {
+                        //white spacing rock links
+                        Grid[var.Y, var.X - 1] = " ";
+                        return false;
+                    }
+                    else if (Grid[var.Y, var.X + 1] == "⌂")
+                    {
+                        //white spacing rock rechts
+                        Grid[var.Y, var.X + 1] = " ";
+                        return false;
+                    }
                 }
                 //Console.WriteLine(var.X + " " + var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
             }
