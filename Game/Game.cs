@@ -14,7 +14,7 @@ namespace Game_map_and_player
         private Monster monster3;
         private Monster monster4;
         private Monster monster5;
-        private List<Monster> monsters = new List<Monster>(5);
+        public List<Monster> monsters = new List<Monster>(5);
 
         public Random directionMonster = new Random();
 
@@ -134,7 +134,7 @@ namespace Game_map_and_player
                 {
                     case 1:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X, var.Y - 1))
+                            if (MyWorld.IsPositioningWalkable(var.X, var.Y - 1, monsters))
                             {
                                 var.Y -= 1;
                             }
@@ -142,7 +142,7 @@ namespace Game_map_and_player
                         }
                     case 2:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X, var.Y + 1))
+                            if (MyWorld.IsPositioningWalkable(var.X, var.Y + 1, monsters))
                             {
                                 var.Y += 1;
                             }
@@ -150,7 +150,7 @@ namespace Game_map_and_player
                         }
                     case 3:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X - 1, var.Y))
+                            if (MyWorld.IsPositioningWalkable(var.X - 1, var.Y, monsters))
                             {
                                 var.X -= 1;
                             }
@@ -158,7 +158,7 @@ namespace Game_map_and_player
                         }
                     case 4:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X + 1, var.Y))
+                            if (MyWorld.IsPositioningWalkable(var.X + 1, var.Y, monsters))
                             {
                                 var.X += 1;
                             }
@@ -183,25 +183,25 @@ namespace Game_map_and_player
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y - 1))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y - 1, monsters))
                     {
                         CurrentPlayer.Y -= 1;
                     }
                     break;
                 case ConsoleKey.DownArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y + 1))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y + 1, monsters))
                     {
                         CurrentPlayer.Y += 1;
                     }
                     break;
                 case ConsoleKey.LeftArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X - 1, CurrentPlayer.Y))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X - 1, CurrentPlayer.Y, monsters))
                     {
                         CurrentPlayer.X -= 1;
                     }
                     break;
                 case ConsoleKey.RightArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X + 1, CurrentPlayer.Y))
+                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X + 1, CurrentPlayer.Y, monsters))
                     {
                         CurrentPlayer.X += 1;
                     }
@@ -219,7 +219,7 @@ namespace Game_map_and_player
                 DrawFrame();
                 //2. Check input player + move avatar
                 HandlePlayerInput();
-                //3. let monsters move or shoot (TODO)
+                //3. let monsters move or shoot 
                 HandleMonsters();
                 //4. Check if game has to end
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid

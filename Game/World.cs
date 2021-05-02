@@ -9,6 +9,7 @@ namespace Game_map_and_player
         private string[,] Grid;
         private int Rows;
         private int Cols;
+        public Monster monster;
 
         public World(string[,] grid)
         {
@@ -55,13 +56,25 @@ namespace Game_map_and_player
             return Grid[y, x];
         }
 
-        public bool IsPositioningWalkable(int x, int y)
+        public bool IsPositioningWalkable(int x, int y, List<Monster> monsters)
         {
+            // monsters
+            foreach (Monster var in monsters)
+            {
+                if (var.X == x && var.Y == y)
+                {
+                    return false;
+                }
+                //Console.WriteLine(var.X + " " + var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
+            }
+
+            // Bounderies en rotsen
             if (x < 1 || y < 1 || x >= Cols-1 || y >= Rows-1 || Grid[y, x] == "⌂" || Grid[y, x] == "☻")
             {
                 return false;
             }
-            if(Grid[y,x] == " " || Grid[y, x] == "░")
+            
+            if (Grid[y,x] == " " || Grid[y, x] == "░")
             {
                 return true;
             }
