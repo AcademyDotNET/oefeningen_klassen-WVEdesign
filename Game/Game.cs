@@ -35,12 +35,12 @@ namespace Game_map_and_player
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
-                {"║","░"," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," ","║"," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," ","═","╬","═"," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," ","║"," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," ","═","╗"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," ","⌂"," "," ","║"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," ","⌂"," ","░","║"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," ","║"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," ","╚","═"," "," "," "," "," "," "," "," ","⌂"," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
@@ -58,8 +58,11 @@ namespace Game_map_and_player
             monster1 = new Monster(17, 11, "☻", ConsoleColor.Red);
             monster2 = new Monster(17, 12, "☻", ConsoleColor.Red);
             monster3 = new Monster(17, 13, "☻", ConsoleColor.Red);
-            monster4 = new Monster(17, 14, "☻", ConsoleColor.DarkRed);
-            monster5 = new Monster(17, 15, "☻", ConsoleColor.DarkRed);
+            monster4 = new Monster(17, 14, "¤", ConsoleColor.DarkRed);
+            monster5 = new Monster(17, 15, "¤", ConsoleColor.DarkRed);
+
+            //charmap windows font consolas
+            //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝§¤¶");
 
             monsters.Add(monster1);
             monsters.Add(monster2);
@@ -76,18 +79,26 @@ namespace Game_map_and_player
         }
         private void displayIntro()
         {
+            Console.WindowHeight = 22; // 20
+            Console.WindowWidth = 85; //30
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
-            Console.WriteLine("WELKOM op 'Save Mr. Smiley of Happy Evil Monsters' GAME");
-            Console.WriteLine("Probeer met de pijltjes ↔ ↕ op uw keyboard Mr. ☺ de overkant te laten bereiken..");
-            Console.WriteLine("Druk op een toets om het spel te starten...");
+            Console.WriteLine("\n\n\n\n          WELKOM op 'Save Mr. Smiley of Happy Evil Monsters' GAME");
+            Console.Write("\nProbeer met de pijltjes ↔ ↕ op uw keyboard Mr. ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("☺");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine(" de overkant te laten bereiken..");
+            Console.WriteLine("\n              Druk op een toets om het spel te starten...");
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
         }
         private void displayOutro()
         {
+            Console.WindowHeight = 22; // 20
+            Console.WindowWidth = 85; //30
             for (int j = 0; j < 20; j++)
             {
                 Console.BackgroundColor = ConsoleColor.White;
@@ -107,14 +118,15 @@ namespace Game_map_and_player
 
                 System.Threading.Thread.Sleep(200); // was 20
             }
-            //charmap windows font consolas
-            //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝");
+            
             //Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
             //Console.ReadKey(true);
         }
 
         private void DrawFrame()
         {
+            Console.WindowHeight = 22; // 20
+            Console.WindowWidth = 22; //30
             Clear();
             MyWorld.Draw();
             CurrentPlayer.Draw();
@@ -226,20 +238,22 @@ namespace Game_map_and_player
                 if (elementAtPlayerPos == "░")
                 {
                     displayOutro();
-                    Console.WriteLine("Play Again? [Y]     , to Stop press [N]");
+                    
+                    Console.CursorVisible = true;
+                    Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Enter any other key");
+                   
                     string toEndOrNot = Console.ReadLine();
                     if (toEndOrNot == "y" || toEndOrNot == "Y")
                     {
-                        // do nothing and restart while loop
-                    }
-                    else if (toEndOrNot == "n" || toEndOrNot == "N")
-                    {
-                        Console.WriteLine("Thanks for playing, cu soon !");
-                        break;
+                        // set playersposition back to origin and continue while loop
+                        // monsters posities blijven onverandert, dit moet anders met new game object.
+                        CurrentPlayer.X = 1;
+                        CurrentPlayer.Y = 9;
+                        Console.CursorVisible = false;
                     }
                     else
                     {
-                        Console.WriteLine("Unknown command, Game aborted.");
+                        Console.WriteLine("Thanks for playing, cu soon !");
                         break;
                     }
                 }
