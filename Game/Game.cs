@@ -91,6 +91,7 @@ namespace Game_map_and_player
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine(" de overkant te laten bereiken..");
             Console.WriteLine("\n              Druk op een toets om het spel te starten...");
+            //Console.WriteLine("       Rechts bewegen: ☺→    , Links bewegen: ¬☺");
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
@@ -118,25 +119,27 @@ namespace Game_map_and_player
 
                 System.Threading.Thread.Sleep(200); // was 20
             }
-            
+
             //Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
             //Console.ReadKey(true);
         }
 
         private void DrawFrame()
         {
-            Console.WindowHeight = 22; // 20
-            Console.WindowWidth = 22; //30
             Clear();
             MyWorld.Draw();
             CurrentPlayer.Draw();
+            DrawAllMonsters();
+        }
 
+        private void DrawAllMonsters()
+        {
             foreach (Monster var in monsters)
             {
                 var.Draw();
             }
         }
-        
+
         private void HandleMonsters()
         {
             foreach (Monster var in monsters)
@@ -225,6 +228,8 @@ namespace Game_map_and_player
         private void RunGameLoop()
         {
             displayIntro();
+            Console.WindowHeight = 22; // 20
+            Console.WindowWidth = 22; //30
             while (true)
             {
                 //1. Draw everything
@@ -238,10 +243,10 @@ namespace Game_map_and_player
                 if (elementAtPlayerPos == "░")
                 {
                     displayOutro();
-                    
+
                     Console.CursorVisible = true;
                     Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Enter any other key");
-                   
+
                     string toEndOrNot = Console.ReadLine();
                     if (toEndOrNot == "y" || toEndOrNot == "Y")
                     {
@@ -258,7 +263,7 @@ namespace Game_map_and_player
                     }
                 }
                 //5. Give Console time to render
-                System.Threading.Thread.Sleep(20);
+                System.Threading.Thread.Sleep(10);
             }
         }
     }

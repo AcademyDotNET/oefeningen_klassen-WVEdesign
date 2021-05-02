@@ -76,12 +76,14 @@ namespace Game_map_and_player
                     {
                         //white spacing rock links
                         Grid[var.Y, var.X - 1] = " ";
+                        Console.Beep();
                         return false;
                     }
                     else if (Grid[var.Y, var.X + 1] == "⌂")
                     {
                         //white spacing rock rechts
                         Grid[var.Y, var.X + 1] = " ";
+                        Console.Beep();
                         return false;
                     }
                 }
