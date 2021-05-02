@@ -14,9 +14,9 @@ namespace Game_map_and_player
         private Monster monster3;
         private Monster monster4;
         private Monster monster5;
-        public List<Monster> monsters = new List<Monster>(5);
+        private List<Monster> monsters = new List<Monster>(5);
 
-        public Random directionMonster = new Random();
+        private Random directionMonster = new Random();
 
         public void Start()
         {
@@ -35,7 +35,7 @@ namespace Game_map_and_player
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║","░"," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," ","║"," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," ","═","╬","═"," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," "," "," "," ","║"," "," "," "," "," ","░","║" },
@@ -81,14 +81,14 @@ namespace Game_map_and_player
             Console.Clear();
             Console.WriteLine("WELKOM op 'Save Mr. Smiley of Happy Evil Monsters' GAME");
             Console.WriteLine("Probeer met de pijltjes ↔ ↕ op uw keyboard Mr. ☺ de overkant te laten bereiken..");
-            Console.WriteLine("Druk op een toets om het spel te starten.");
+            Console.WriteLine("Druk op een toets om het spel te starten...");
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
         }
         private void displayOutro()
         {
-            for (int j = 0; j < 30; j++)
+            for (int j = 0; j < 20; j++)
             {
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -98,19 +98,19 @@ namespace Game_map_and_player
                 var margin = "".PadLeft(j);
                 Console.WriteLine(margin + "                                              ");
                 Console.WriteLine(margin + "        __                                    ");
-                Console.WriteLine(margin + "      _/  \\_                                 ");
-                Console.WriteLine(margin + "      (⌐`_´)                                  ");
-                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                             ");
-                Console.WriteLine(margin + "      _/ \\_                                  ");
+                Console.WriteLine(margin + "      _/  \\_                      ▓▒         ");
+                Console.WriteLine(margin + "      (⌐`_´)                      ▓▒▓         ");
+                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                ▓▒▓▒         ");
+                Console.WriteLine(margin + "      _/ \\_                    ▓▒▓▒          ");
                 Console.WriteLine("     --------------------------------------------------");
-                Console.WriteLine("\n\n\nProficiat, u heeft heelhuids Mr. ☺ aan de overkant gekregen, en zodus GEWONNEN !!!!!");
+                Console.WriteLine("\n\n\nProficiat, u heeft Mr. ☺ heelhuids aan de overkant gekregen, en zodus GEWONNEN !!!!!");
 
                 System.Threading.Thread.Sleep(200); // was 20
             }
             //charmap windows font consolas
             //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝");
-            Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
-            Console.ReadKey(true);
+            //Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
+            //Console.ReadKey(true);
         }
 
         private void DrawFrame()
@@ -221,16 +221,31 @@ namespace Game_map_and_player
                 HandlePlayerInput();
                 //3. let monsters move or shoot 
                 HandleMonsters();
-                //4. Check if game has to end
+                //4. Check if game has to end and if so play animation and suggest to play again
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid
                 if (elementAtPlayerPos == "░")
                 {
-                    break;
+                    displayOutro();
+                    Console.WriteLine("Play Again? [Y]     , to Stop press [N]");
+                    string toEndOrNot = Console.ReadLine();
+                    if (toEndOrNot == "y" || toEndOrNot == "Y")
+                    {
+                        // do nothing and restart while loop
+                    }
+                    else if (toEndOrNot == "n" || toEndOrNot == "N")
+                    {
+                        Console.WriteLine("Thanks for playing, cu soon !");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unknown command, Game aborted.");
+                        break;
+                    }
                 }
                 //5. Give Console time to render
                 System.Threading.Thread.Sleep(20);
             }
-            displayOutro();
         }
     }
 }
