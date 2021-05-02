@@ -9,13 +9,12 @@ namespace Game_map_and_player
     {
         private World MyWorld;
         private Player CurrentPlayer;
-        private Monster CurrentMonster;
-        private Monster CurrentMonster1;
-        private Monster CurrentMonster2;
-        private Monster CurrentMonster3;
-        private Monster CurrentMonster4;
-
-
+        private Monster monster1;
+        private Monster monster2;
+        private Monster monster3;
+        private Monster monster4;
+        private Monster monster5;
+        private List<Monster> monsters = new List<Monster>(5);
 
         public Random directionMonster = new Random();
 
@@ -56,11 +55,22 @@ namespace Game_map_and_player
             //currentPlayer.Draw();
             CurrentPlayer = new Player(1, 9);
 
-            CurrentMonster = new Monster(17, 10, "☻", ConsoleColor.Red);
-            CurrentMonster1 = new Monster(17, 11, "☻", ConsoleColor.Red);
-            CurrentMonster2 = new Monster(17, 12, "☻", ConsoleColor.Red);
-            CurrentMonster3 = new Monster(17, 13, "☻", ConsoleColor.Red);
-            CurrentMonster4 = new Monster(17, 14, "☻", ConsoleColor.DarkRed);
+            monster1 = new Monster(17, 11, "☻", ConsoleColor.Red);
+            monster2 = new Monster(17, 12, "☻", ConsoleColor.Red);
+            monster3 = new Monster(17, 13, "☻", ConsoleColor.Red);
+            monster4 = new Monster(17, 14, "☻", ConsoleColor.DarkRed);
+            monster5 = new Monster(17, 15, "☻", ConsoleColor.DarkRed);
+
+            monsters.Add(monster1);
+            monsters.Add(monster2);
+            monsters.Add(monster3);
+            monsters.Add(monster4);
+            monsters.Add(monster5);
+
+            //foreach(Monster var in monsters)
+            //{
+            //    Console.WriteLine(var.X +" "+ var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
+            //}
 
             RunGameLoop();
         }
@@ -83,7 +93,7 @@ namespace Game_map_and_player
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.Clear();
-                
+
                 Console.WriteLine();
                 var margin = "".PadLeft(j);
                 Console.WriteLine(margin + "                                              ");
@@ -108,58 +118,62 @@ namespace Game_map_and_player
             Clear();
             MyWorld.Draw();
             CurrentPlayer.Draw();
-            CurrentMonster.Draw();
-            CurrentMonster1.Draw();
-            CurrentMonster2.Draw();
-            CurrentMonster3.Draw();
-            CurrentMonster4.Draw();
-        }
-        private void HandleMonster()
-        {
-            int dir = directionMonster.Next(1, 5);
-            switch (dir)
+
+            foreach (Monster var in monsters)
             {
-                case 1:
-                    {
-                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X, CurrentMonster.Y - 1))
+                var.Draw();
+            }
+        }
+        
+        private void HandleMonsters()
+        {
+            foreach (Monster var in monsters)
+            {
+                int dir = directionMonster.Next(1, 5);
+                switch (dir)
+                {
+                    case 1:
                         {
-                            CurrentMonster.Y -= 1;
+                            if (MyWorld.IsPositioningWalkable(var.X, var.Y - 1))
+                            {
+                                var.Y -= 1;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 2:
-                    {
-                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X, CurrentMonster.Y + 1))
+                    case 2:
                         {
-                            CurrentMonster.Y += 1;
+                            if (MyWorld.IsPositioningWalkable(var.X, var.Y + 1))
+                            {
+                                var.Y += 1;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 3:
-                    {
-                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X - 1, CurrentMonster.Y))
+                    case 3:
                         {
-                            CurrentMonster.X -= 1;
+                            if (MyWorld.IsPositioningWalkable(var.X - 1, var.Y))
+                            {
+                                var.X -= 1;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 4:
-                    {
-                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X + 1, CurrentMonster.Y))
+                    case 4:
                         {
-                            CurrentMonster.X += 1;
+                            if (MyWorld.IsPositioningWalkable(var.X + 1, var.Y))
+                            {
+                                var.X += 1;
+                            }
+                            break;
                         }
+                    default:
                         break;
-                    }
-                default:
-                    break;
+                }
             }
         }
 
         private void HandlePlayerInput()
         {
             ConsoleKey key;
-            //ontdendering (debouncing)
+            //ontdendering (debouncing) Keyboard inputs
             do
             {
                 ConsoleKeyInfo keyInfo = ReadKey(true);
@@ -206,7 +220,7 @@ namespace Game_map_and_player
                 //2. Check input player + move avatar
                 HandlePlayerInput();
                 //3. let monsters move or shoot (TODO)
-                HandleMonster();
+                HandleMonsters();
                 //4. Check if game has to end
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid
                 if (elementAtPlayerPos == "░")

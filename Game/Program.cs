@@ -10,8 +10,6 @@ namespace Game_map_and_player
         {
             Game currentGame = new Game();
             currentGame.Start();
-           
-            
         }
     }
 }
