@@ -18,7 +18,7 @@ namespace Game_map_and_player
 
 
         public Random directionMonster = new Random();
-        
+
         public void Start()
         {
             //WriteLine("Game is starting");
@@ -78,30 +78,31 @@ namespace Game_map_and_player
         }
         private void displayOutro()
         {
-                for (int j = 0; j < 30; j++)
+            for (int j = 0; j < 30; j++)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.Clear();
+                            
+                for (int s = 0; s < j / 2; s++)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.Clear();
-
-                    // steam
-                    Console.Write("       . . . . o o o o o o");
-                    for (int s = 0; s < j / 2; s++)
-                    {
-                        Console.Write(" o");
-                    }
-                    Console.WriteLine();
-
-                    var margin = "".PadLeft(j);
-                    Console.WriteLine(margin + "                _____      o");
-                    Console.WriteLine(margin + "       ____====  ]OO|_n_n__][.");
-                    Console.WriteLine(margin + "      [________]_|__|________)< ");
-                    Console.WriteLine(margin + "       oo    oo  'oo OOOO-| oo\\_");
-                    Console.WriteLine("   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+");
-                    Console.WriteLine("\n\n\nProficiat, u heeft heelhuids Mr. ☺ aan de overkant gekregen, en zodus GEWONNEN !!!!!");
-                   
-                    System.Threading.Thread.Sleep(200); // was 20
+                    Console.Write(" ");
                 }
+                Console.WriteLine();
+                var margin = "".PadLeft(j);
+                Console.WriteLine(margin + "                                              ");
+                Console.WriteLine(margin + "        __                                    ");
+                Console.WriteLine(margin + "      _/  \\_                                 ");
+                Console.WriteLine(margin + "      (⌐`_´)                                  ");
+                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                             ");
+                Console.WriteLine(margin + "      _/ \\_                                  ");
+                Console.WriteLine("     --------------------------------------------------");
+                Console.WriteLine("\n\n\nProficiat, u heeft heelhuids Mr. ☺ aan de overkant gekregen, en zodus GEWONNEN !!!!!");
+
+                System.Threading.Thread.Sleep(200); // was 20
+            }
+            //charmap windows font consolas
+            //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝");
             Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
             Console.ReadKey(true);
         }
@@ -140,7 +141,7 @@ namespace Game_map_and_player
                     }
                 case 3:
                     {
-                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X-1, CurrentMonster.Y))
+                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X - 1, CurrentMonster.Y))
                         {
                             CurrentMonster.X -= 1;
                         }
@@ -148,7 +149,7 @@ namespace Game_map_and_player
                     }
                 case 4:
                     {
-                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X+1, CurrentMonster.Y))
+                        if (MyWorld.IsPositioningWalkable(CurrentMonster.X + 1, CurrentMonster.Y))
                         {
                             CurrentMonster.X += 1;
                         }
@@ -162,7 +163,7 @@ namespace Game_map_and_player
         private void HandlePlayerInput()
         {
             ConsoleKey key;
-            //ontdendering
+            //ontdendering (debouncing)
             do
             {
                 ConsoleKeyInfo keyInfo = ReadKey(true);
