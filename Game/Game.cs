@@ -108,12 +108,12 @@ namespace Game_map_and_player
 
                 Console.WriteLine();
                 var margin = "".PadLeft(j);
-                Console.WriteLine(margin + "                                              ");
-                Console.WriteLine(margin + "        __                                    ");
-                Console.WriteLine(margin + "      _/  \\_                      ▓▒         ");
-                Console.WriteLine(margin + "      (⌐`_´)                      ▓▒▓         ");
-                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                ▓▒▓▒         ");
-                Console.WriteLine(margin + "      _/ \\_                    ▓▒▓▒          ");
+                Console.WriteLine(margin + "                                     _          ");
+                Console.WriteLine(margin + "                                    ▒∩░         ");
+                Console.WriteLine(margin + "      |||||                        ▓▒░▒▌        ");
+                Console.WriteLine(margin + "      (⌐`_´)                      ▓▒▓░░         ");
+                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                ▓▒▓▒▒▒        ");
+                Console.WriteLine(margin + "      _/ \\_                    ▓▒▓▒░ ░▒         ");
                 Console.WriteLine("     --------------------------------------------------");
                 Console.WriteLine("\n\n\nProficiat, u heeft Mr. ☺ heelhuids aan de overkant gekregen, en zodus GEWONNEN !!!!!");
 
@@ -255,6 +255,8 @@ namespace Game_map_and_player
                         CurrentPlayer.X = 1;
                         CurrentPlayer.Y = 9;
                         Console.CursorVisible = false;
+                        Console.WindowHeight = 22; // 20
+                        Console.WindowWidth = 22; //30
                     }
                     else
                     {
