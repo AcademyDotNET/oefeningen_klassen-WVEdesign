@@ -9,8 +9,10 @@ using System.Text;
 //          - speler rechts laten schieten + mapelement vernietigen.
 //          - Monsters player laten opeten + player terug op originele positie laten beginnen.
 //          - map uit text file halen
-//          - verschilllende levels inmaken.
-//          - elk vak vergroten naar 2* x.      Rechts bewegen: ☺┭    , Links bewegen: ┮☺  
+//          - verschilllende levels maken.
+//          - polymorphe toepassen op monsters, -> afgeleide.
+//          - 
+
 
 namespace Game_map_and_player
 {

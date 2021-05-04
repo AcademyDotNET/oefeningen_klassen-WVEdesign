@@ -53,7 +53,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wouter_test01", "Wouter_tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces_diskwriter example", "Interfaces_diskwriter example\Interfaces_diskwriter example.csproj", "{390B0FA6-5DC3-4F81-BBCA-232DF5CE9C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_map_and_player", "Game\Game_map_and_player.csproj", "{B8657575-E304-435B-B244-6CFAA4D5CED5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game_map_and_player", "Game\Game_map_and_player.csproj", "{B8657575-E304-435B-B244-6CFAA4D5CED5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sports_Sportspeler", "Sports_Sportspeler\Sports_Sportspeler.csproj", "{F146FB27-A430-46F1-B236-5AEB3C4D3089}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericListTester", "GenericListTester\GenericListTester.csproj", "{D429B67F-0CB7-4406-84AC-A2C778945D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaartGokker", "KaartGokker\KaartGokker.csproj", "{E97E7A46-339A-431D-9DDC-4B9BD317F304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTools", "MouseClickinConsoleTest\ConsoleTools.csproj", "{30F44AA4-966C-4978-B95D-A3F2AE5C2281}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +173,22 @@ Global
 		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8657575-E304-435B-B244-6CFAA4D5CED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F146FB27-A430-46F1-B236-5AEB3C4D3089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F146FB27-A430-46F1-B236-5AEB3C4D3089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F146FB27-A430-46F1-B236-5AEB3C4D3089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F146FB27-A430-46F1-B236-5AEB3C4D3089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D429B67F-0CB7-4406-84AC-A2C778945D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D429B67F-0CB7-4406-84AC-A2C778945D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D429B67F-0CB7-4406-84AC-A2C778945D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D429B67F-0CB7-4406-84AC-A2C778945D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97E7A46-339A-431D-9DDC-4B9BD317F304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97E7A46-339A-431D-9DDC-4B9BD317F304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97E7A46-339A-431D-9DDC-4B9BD317F304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97E7A46-339A-431D-9DDC-4B9BD317F304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F44AA4-966C-4978-B95D-A3F2AE5C2281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F44AA4-966C-4978-B95D-A3F2AE5C2281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F44AA4-966C-4978-B95D-A3F2AE5C2281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F44AA4-966C-4978-B95D-A3F2AE5C2281}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
