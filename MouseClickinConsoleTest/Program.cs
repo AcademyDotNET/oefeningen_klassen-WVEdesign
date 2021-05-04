@@ -24,13 +24,20 @@ namespace ConsoleTools
 
             GUI.Add(One);
             GUI.CalculateOnStart();
-            for (; ; )
+            while(true)
             {
                 MousePos = new Point(System.Windows.Forms.Control.MousePosition.X / (Console.LargestWindowWidth / 24), Control.MousePosition.Y / (Console.LargestWindowHeight / 7));
+                //Console.WriteLine($"X as = { Control.MousePosition.X} Y as = { Control.MousePosition.Y}" );
+
+                Console.Title = ($"X as = { Control.MousePosition.X} Y as = { Control.MousePosition.Y} Mouse button = {Control.MouseButtons == MouseButtons.Left}");
                 if (One.Pressed(MousePos))
                 {
                     Console.Write("2");
                 }
+
+                //Control.MouseButtons == MouseButtons.Left;
+
+
                 //   Console.Clear();
             }
         }
@@ -164,7 +171,7 @@ namespace ConsoleTools
 
             int xx = (x / (Console.LargestWindowWidth / 24));
 
-            return M.X >= xx && M.X <= (xx + Text.Length * 1.5f) && M.Y >= yy && M.Y <= yy + 2 && System.Windows.Forms.Control.MouseButtons == System.Windows.Forms.MouseButtons.Left;
+            return M.X >= xx && M.X <= (xx + Text.Length * 1.5f) && M.Y >= yy && M.Y <= yy + 2 && Control.MouseButtons == MouseButtons.Left;
         }
 
         public void CalculateClick(Point M)
