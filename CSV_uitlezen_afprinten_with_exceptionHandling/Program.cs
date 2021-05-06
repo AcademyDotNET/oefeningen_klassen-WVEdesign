@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CSV_uitlezen_afprinten_with_exceptionHandling
 {
@@ -17,6 +18,7 @@ namespace CSV_uitlezen_afprinten_with_exceptionHandling
             }
             catch (Exception errorDownloadstring)
             {
+                Debug.WriteLine(errorDownloadstring.Message);
                 Console.WriteLine(errorDownloadstring.Message);
             }
                
@@ -36,8 +38,8 @@ namespace CSV_uitlezen_afprinten_with_exceptionHandling
             }
             catch (Exception error)
             {
-
                 Console.WriteLine(error.Message);
+                Debug.WriteLine(error.Message);
             }
             
             try
@@ -46,8 +48,8 @@ namespace CSV_uitlezen_afprinten_with_exceptionHandling
             }
             catch (Exception error)
             {
-
                 Console.WriteLine(error.Message);
+                Debug.WriteLine(error.Message);
             }
             
         }
