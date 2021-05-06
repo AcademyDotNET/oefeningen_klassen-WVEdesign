@@ -11,7 +11,8 @@ using System.Text;
 //          - map uit text file halen
 //          - verschilllende levels maken.
 //          - polymorphe toepassen op monsters, -> afgeleide.
-//          - 
+//          - 1. schieten van player, en opeten door monsters
+//          - 2. levens toevoegen dat player kan doodgaan(verliezen)+score
 
 
 namespace Game_map_and_player
