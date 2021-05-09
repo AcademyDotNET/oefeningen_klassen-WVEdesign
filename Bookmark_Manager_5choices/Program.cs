@@ -47,7 +47,7 @@ namespace Bookmark_Manager_Hidden
         {
             Console.WriteLine("Geef je favoriete sites:");
             List<BookMark> sites = new List<BookMark>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Console.WriteLine($"Geef site {i} in:");
                 Console.WriteLine("Naam?");
@@ -90,7 +90,11 @@ namespace Bookmark_Manager_Hidden
         private static void OpenSite(List<BookMark> sites)
         {
             int keuze = AskAction(sites, "openen");
+
             sites[keuze].OpenSite();
+            
+            
+            
         }
 
         private static void ShowAll(List<BookMark> sites)

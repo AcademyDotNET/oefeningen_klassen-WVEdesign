@@ -2,7 +2,7 @@
 using System.Text;
 
 // ToDo:    - parser maken om van map/grid automatisch monsters en rotsen in List van objecten te steken.
-//          - Klasse Monster, .naam + en .levens♥♥♥ 
+//          - Klasse Monster, .naam + en .levens ♥♥♥ 
 //          - Scoreboard onderaan, player en monsters met levens en coordinaten, killed bool? Extra: tijd opmeting
 //          - Child klasse maken van Monster naar RockDestroyer ??
 //          - Een speler kan niet door rotsen of monsters wandelen. Monsters door monsters werkt al.
@@ -11,7 +11,9 @@ using System.Text;
 //          - map uit text file halen
 //          - verschilllende levels maken.
 //          - polymorphe toepassen op monsters, -> afgeleide.
-//          - 1. schieten van player, en opeten door monsters
+//          - 1.a., schieten van player == OK, nog functie toevoegen die scant of op bepaalde positie monsterobject staat en
+//                // dit terug geeft., alsook leven verwijderd van object tot het dood is.
+//          - 1.b., en opeten door monsters
 //          - 2. levens toevoegen dat player kan doodgaan(verliezen)+score
 
 

@@ -18,6 +18,10 @@ namespace Game_map_and_player
 
         private Random directionMonster = new Random();
 
+        // Player settings
+        const int shootRangeMax = 8; // Player's max shooting range
+        bool shootInVoid = true;  // bij true ook shoot animatie laten zien wanneer er niets in de weg staat
+
         public void Start()
         {
             //WriteLine("Game is starting");
@@ -25,41 +29,41 @@ namespace Game_map_and_player
 
             string[,] grid =
             {
-                {"╔","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╗" },
-                {"║"," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," "," ","⌂"," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," ","║"," "," "," "," "," ","║"," ","░","║" },
-                {"║"," "," "," "," "," "," "," ","⌂"," "," "," ","║"," ","⌂","⌂"," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," ","║"," "," "," ","═","═","╣"," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," ","⌂"," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," ","⌂"," "," "," "," "," "," ","║"," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," ","⌂"," ","⌂"," ","║"," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," ","⌂"," "," "," "," "," ","⌂","⌂"," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," ","║"," ","⌂","⌂"," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," "," "," ","═","╬","═"," ","⌂"," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," ","║","⌂","⌂"," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," ","═","╗"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," ","⌂"," ","░","║"," "," "," ","⌂"," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," ","⌂"," "," "," ","║"," "," "," "," "," "," "," "," ","⌂"," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," ","╚","═"," "," "," "," "," "," "," "," ","⌂"," ","░","║" },
-                {"║"," "," "," "," "," "," ","⌂"," "," "," "," ","⌂"," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","░","║" },
-                {"╚","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╝" },
+                {"╔","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╗" },
+                {"║"," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," "," ","⌂"," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," ","║"," "," "," "," "," ","║"," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," ","⌂"," "," "," ","║"," ","⌂","⌂"," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," ","║"," "," "," ","═","═","╣"," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," ","⌂"," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," ","⌂"," "," "," "," "," "," ","║"," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," ","⌂"," ","⌂"," ","║"," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," ","⌂"," "," "," "," "," ","⌂","⌂"," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," ","║"," ","⌂","⌂"," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," ","☻"," "," ","═","╬","═"," ","⌂"," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," ","║","⌂","⌂"," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","═","╗"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," ","⌂"," ","░","║"," "," "," ","⌂"," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," ","⌂"," "," "," ","║"," "," "," "," "," "," "," "," ","⌂"," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," ","╚","═"," "," "," "," "," "," "," "," ","⌂"," "," ","░","║" },
+                {"║"," "," "," "," "," "," ","⌂"," "," "," "," ","⌂"," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
+                {"╚","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╝" },
             };
-            //World myWorld = new World(grid);
+            //World myWorld = new World(grid);   
             //myWorld.Draw();
             MyWorld = new World(grid);
             //Player currentPlayer = new Player(2, 2);
             //currentPlayer.Draw();
             CurrentPlayer = new Player(1, 9);
 
-            monster1 = new Monster(17, 11, "☻", ConsoleColor.Red);
-            monster2 = new Monster(17, 12, "☻", ConsoleColor.Red);
-            monster3 = new Monster(17, 13, "☻", ConsoleColor.Red);
-            monster4 = new Monster(17, 14, "¤", ConsoleColor.DarkRed);
-            monster5 = new Monster(17, 15, "¤", ConsoleColor.DarkRed);
+            monster1 = new Monster("monster1", 17, 11, "☻", ConsoleColor.Red);
+            monster2 = new Monster("monster2", 17, 12, "☻", ConsoleColor.Red);
+            monster3 = new Monster("monster3", 17, 13, "☻", ConsoleColor.Red);
+            monster4 = new Monster("monster4", 14, 14, "¤", ConsoleColor.DarkRed);
+            monster5 = new Monster("monster5", 15, 14, "¤", ConsoleColor.DarkRed);
 
             //charmap windows font consolas
             //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝§¤¶");
@@ -74,6 +78,7 @@ namespace Game_map_and_player
             //{
             //    Console.WriteLine(var.X +" "+ var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
             //}
+
 
             RunGameLoop();
         }
@@ -91,10 +96,11 @@ namespace Game_map_and_player
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine(" de overkant te laten bereiken..");
             Console.WriteLine("\n              Druk op een toets om het spel te starten...");
-            //Console.WriteLine("       Rechts bewegen: ☺→    , Links bewegen: ¬☺");
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
+
+
         }
         private void displayOutro()
         {
@@ -112,12 +118,12 @@ namespace Game_map_and_player
                 Console.WriteLine(margin + "                                    ▒∩░         ");
                 Console.WriteLine(margin + "      |||||                        ▓▒░▒▌        ");
                 Console.WriteLine(margin + "      (⌐`_´)                      ▓▒▓░░         ");
-                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                ▓▒▓▒▒▒        ");
-                Console.WriteLine(margin + "      _/ \\_                    ▓▒▓▒░ ░▒         ");
-                Console.WriteLine("     --------------------------------------------------");
+                Console.WriteLine(margin + "     <,►╦╤─ ☼ - -                ▓▒▓▒▒▒         ");
+                Console.WriteLine(margin + "      _/ \\_                    ▓▒▓▒░ ░▒        ");
+                Console.WriteLine("     --------------------------------------------------  ");
                 Console.WriteLine("\n\n\nProficiat, u heeft Mr. ☺ heelhuids aan de overkant gekregen, en zodus GEWONNEN !!!!!");
 
-                System.Threading.Thread.Sleep(200); // was 20
+                System.Threading.Thread.Sleep(100); // was 20
             }
 
             //Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
@@ -126,10 +132,12 @@ namespace Game_map_and_player
 
         private void DrawFrame()
         {
-            Clear();
+            //Clear();
+
             MyWorld.Draw();
             CurrentPlayer.Draw();
             DrawAllMonsters();
+
         }
 
         private void DrawAllMonsters()
@@ -149,7 +157,7 @@ namespace Game_map_and_player
                 {
                     case 1:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X, var.Y - 1, monsters))
+                            if (MyWorld.IsPositionFree(var.X, var.Y - 1, monsters))
                             {
                                 var.Y -= 1;
                             }
@@ -157,7 +165,7 @@ namespace Game_map_and_player
                         }
                     case 2:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X, var.Y + 1, monsters))
+                            if (MyWorld.IsPositionFree(var.X, var.Y + 1, monsters))
                             {
                                 var.Y += 1;
                             }
@@ -165,7 +173,7 @@ namespace Game_map_and_player
                         }
                     case 3:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X - 1, var.Y, monsters))
+                            if (MyWorld.IsPositionFree(var.X - 1, var.Y, monsters))
                             {
                                 var.X -= 1;
                             }
@@ -173,7 +181,7 @@ namespace Game_map_and_player
                         }
                     case 4:
                         {
-                            if (MyWorld.IsPositioningWalkable(var.X + 1, var.Y, monsters))
+                            if (MyWorld.IsPositionFree(var.X + 1, var.Y, monsters))
                             {
                                 var.X += 1;
                             }
@@ -198,27 +206,77 @@ namespace Game_map_and_player
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y - 1, monsters))
+                    if (MyWorld.IsPositionFree(CurrentPlayer.X, CurrentPlayer.Y - 1, monsters))
                     {
                         CurrentPlayer.Y -= 1;
                     }
                     break;
                 case ConsoleKey.DownArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X, CurrentPlayer.Y + 1, monsters))
+                    if (MyWorld.IsPositionFree(CurrentPlayer.X, CurrentPlayer.Y + 1, monsters))
                     {
                         CurrentPlayer.Y += 1;
                     }
                     break;
                 case ConsoleKey.LeftArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X - 1, CurrentPlayer.Y, monsters))
+                    if (MyWorld.IsPositionFree(CurrentPlayer.X - 1, CurrentPlayer.Y, monsters))
                     {
                         CurrentPlayer.X -= 1;
                     }
                     break;
                 case ConsoleKey.RightArrow:
-                    if (MyWorld.IsPositioningWalkable(CurrentPlayer.X + 1, CurrentPlayer.Y, monsters))
+                    if (MyWorld.IsPositionFree(CurrentPlayer.X + 1, CurrentPlayer.Y, monsters))
                     {
                         CurrentPlayer.X += 1;
+                    }
+                    break;
+                case ConsoleKey.Spacebar:
+                    {
+
+                        for (int i = 0; i <= shootRangeMax; i++)
+                        {
+                            int range = i - 1;
+                            bool killedOne = false;
+                           // i = shootRangeMax;
+                            string elementInFrontPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X + i, CurrentPlayer.Y); //get a copy of players position in Grid
+                            string monsterInFrontPlayerPos = MyWorld.GetMonsterAt(CurrentPlayer.X + i, CurrentPlayer.Y, monsters);
+                            
+                            if (elementInFrontPlayerPos != " ")
+                            {
+                                if (elementInFrontPlayerPos == "☻" || elementInFrontPlayerPos == "¤")
+                                {
+                                    CurrentPlayer.Shoot(true, range);
+                                    shootInVoid = false;
+                                }
+                                // check for any monster
+
+                                else
+                                {
+                                    CurrentPlayer.Shoot(false, range);
+                                    shootInVoid = false;
+                                }
+
+                            }
+                            else if (elementInFrontPlayerPos == " ")
+                            {
+                                foreach (Monster var in monsters)
+                                {
+                                    if (var.Y == CurrentPlayer.Y && var.X == CurrentPlayer.X + range && killedOne == false)
+                                    {
+                                        //Console.WriteLine(var.X + " " + var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
+                                        CurrentPlayer.Shoot(true, range-1);
+                                        killedOne = true;
+                                        range = shootRangeMax;
+                                        shootInVoid = false;
+                                        var.MonsterColor = ConsoleColor.Black;
+                                    }
+                                   
+                                }
+                            }
+                        }
+                        if (shootInVoid == true)
+                        {
+                            CurrentPlayer.Shoot(false, shootRangeMax);
+                        }
                     }
                     break;
                 default:
@@ -228,8 +286,7 @@ namespace Game_map_and_player
         private void RunGameLoop()
         {
             displayIntro();
-            Console.WindowHeight = 22; // 20
-            Console.WindowWidth = 22; //30
+            MyWorld.DrawConsole();
             while (true)
             {
                 //1. Draw everything
@@ -245,7 +302,7 @@ namespace Game_map_and_player
                     displayOutro();
 
                     Console.CursorVisible = true;
-                    Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Enter any other key");
+                    Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
 
                     string toEndOrNot = Console.ReadLine();
                     if (toEndOrNot == "y" || toEndOrNot == "Y")
@@ -255,8 +312,7 @@ namespace Game_map_and_player
                         CurrentPlayer.X = 1;
                         CurrentPlayer.Y = 9;
                         Console.CursorVisible = false;
-                        Console.WindowHeight = 22; // 20
-                        Console.WindowWidth = 22; //30
+                        MyWorld.DrawConsole();
                     }
                     else
                     {
@@ -265,7 +321,7 @@ namespace Game_map_and_player
                     }
                 }
                 //5. Give Console time to render
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(50);
             }
         }
     }
