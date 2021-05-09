@@ -9,7 +9,7 @@ namespace Game_map_and_player
         private string[,] Grid;
         private int Rows;
         private int Cols;
-       // public Monster monster;
+        public Monster monster;
 
         public World(string[,] grid)
         {

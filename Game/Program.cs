@@ -19,6 +19,7 @@ using System.Text;
 //             levelnr, score.
 //          - herstarten van new game en stop game op basis van game object toevoegen
 //          - Top 10 High Score board invoegen met Name entry enkel wanneer er een nieuwe high score is.
+//          - Stylesheet integreren in code met klasse Css.cs (consolekleuren ed...)
 
 namespace Game_map_and_player
 {

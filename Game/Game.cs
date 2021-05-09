@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using static System.Console;
 
@@ -41,7 +42,7 @@ namespace Game_map_and_player
                 {"║"," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," ","║"," "," ","░","║" },
                 {"║"," "," "," "," "," "," ","⌂"," "," ","⌂"," "," "," "," "," ","⌂","⌂"," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," ","⌂"," "," "," "," "," ","║"," ","⌂","⌂"," "," "," ","░","║" },
-                {"║"," "," "," "," "," "," "," "," "," ","☻"," "," ","═","╬","═"," ","⌂"," "," "," ","░","║" },
+                {"║"," "," "," "," "," "," "," "," "," "," "," "," ","═","╬","═"," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," "," "," "," "," ","⌂"," "," ","║","⌂","⌂"," "," "," "," ","░","║" },
                 {"║"," "," "," "," "," "," ","═","╗"," "," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"║"," "," "," "," ","⌂"," ","░","║"," "," "," ","⌂"," "," "," "," "," "," "," "," ","░","║" },
@@ -238,20 +239,29 @@ namespace Game_map_and_player
                             string mapElementInFrontPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X + i, CurrentPlayer.Y); //get a copy of players position in Grid
                             string monsterInFrontPlayerPos = MyWorld.GetMonsterAt(CurrentPlayer.X + i, CurrentPlayer.Y, monsters);
 
-                            // shooting monster if there is one
-                            if (monsterInFrontPlayerPos != " ")
-                            {
-                                CurrentPlayer.Shoot(true, range);
-                                shootInVoid = false;
-                                i = shootRangeMax;
-                                //var.MonsterColor = ConsoleColor.Black; == DIE methode toevoegen aan monsters
-                            }
-
                             // not shooting through map elements
                             if (mapElementInFrontPlayerPos != " ")
                             {
                                 CurrentPlayer.Shoot(false, range);
                                 shootInVoid = false;
+                                i = shootRangeMax;
+                            }
+
+                            // shooting monster if there is one
+                            if (monsterInFrontPlayerPos != " ")
+                            {
+                                CurrentPlayer.Shoot(true, range);
+                                shootInVoid = false;
+                                
+                                foreach (Monster var in monsters.ToList())
+                                {
+                                    // monster op monsterplaats
+                                    if (var.MonsterNaam == monsterInFrontPlayerPos)
+                                    {
+                                        var.Die(); // animation
+                                        monsters.Remove(var);
+                                    }
+                                }
                                 i = shootRangeMax;
                             }
                         }

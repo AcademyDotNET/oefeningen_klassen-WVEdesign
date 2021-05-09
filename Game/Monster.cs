@@ -12,7 +12,6 @@ namespace Game_map_and_player
         public string MonsterNaam { get; set; }
         public ConsoleColor MonsterColor { get; set; }
         
-
         public Monster(string Naam,int initialX, int initialY, string avatarSymbol, ConsoleColor Color)
         {
             X = initialX;
@@ -21,7 +20,6 @@ namespace Game_map_and_player
             MonsterColor = Color;
             MonsterNaam = Naam;
         }
-
         public void Draw()
         {
             Console.ForegroundColor = MonsterColor;
@@ -29,6 +27,15 @@ namespace Game_map_and_player
             Console.SetCursorPosition(X, Y);
             Console.Write(MonsterAvatar);
             Console.ResetColor();
+        }
+        public void Die()
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(X, Y);
+            Console.Write(MonsterAvatar);
+            Console.ResetColor();
+            System.Threading.Thread.Sleep(50);
         }
     }
 }
