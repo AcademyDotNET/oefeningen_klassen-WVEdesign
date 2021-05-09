@@ -74,7 +74,7 @@ namespace Game_map_and_player
 
             RunGameLoop();
         }
-        private void displayIntro()
+        private void DisplayIntro()
         {
             Console.WindowHeight = 22; // 20
             Console.WindowWidth = 85; //30
@@ -87,13 +87,14 @@ namespace Game_map_and_player
             Console.Write("☺");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine(" de overkant te laten bereiken..");
+            Console.WriteLine(" , gebruik SPATIEBALK om te schieten..");
             Console.WriteLine("\n              Druk op een toets om het spel te starten...");
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
             Console.Clear();
         }
-        private void displayOutro()
+        private void DisplayOutro()
         {
             Console.WindowHeight = 22; // 20
             Console.WindowWidth = 85; //30
@@ -119,7 +120,7 @@ namespace Game_map_and_player
             }
         }
 
-        private void displayOutroFail()
+        private void DisplayOutroFail()
         {
             Console.WindowHeight = 22; // 20
             Console.WindowWidth = 85; //30
@@ -132,16 +133,38 @@ namespace Game_map_and_player
 
                 Console.WriteLine();
                 var margin = "".PadLeft(j);
-                Console.WriteLine(margin + "           _                                ");
-                Console.WriteLine(margin + "          ▒∩░                               ");
-                Console.WriteLine(margin + "         ▓▒░▒▌                |||||         ");
+                Console.WriteLine(margin + "              _                                ");
+                Console.WriteLine(margin + "             ▒∩░                               ");
+                Console.WriteLine(margin + "          ▓▒░▒▌_               |||||         ");
                 Console.WriteLine(margin + "          ▓▒▓░░               (⌐´_`)        ");
                 Console.WriteLine(margin + "         ▓▒▓▒▒▒               |,  />        ");
                 Console.WriteLine(margin + "       ▓▒▓▒░ ░▒              _/ \\_         ");
                 Console.WriteLine("     -------------------------------------------------------- ");
-                Console.WriteLine("\n\n\n                       You Lost !!                      ");
+                Console.WriteLine("\n\n\n                           You Lost !!                      ");
 
                 System.Threading.Thread.Sleep(100); // was 20
+            }
+        }
+
+        private void DisplayExit()
+        {
+
+            Console.CursorVisible = true;
+            Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
+
+            string toEndOrNot = Console.ReadLine();
+            if (toEndOrNot == "y" || toEndOrNot == "Y")
+            {
+                // set playersposition back to origin and continue while loop
+                // monsters posities blijven onverandert, dit moet anders met new game object.
+                CurrentPlayer.PlayerLives = 3;
+                CurrentPlayer.X = 1;
+                CurrentPlayer.Y = 9;
+                Console.CursorVisible = false;
+            }
+            else
+            {
+                Console.WriteLine("Thanks for playing, cu soon !");
             }
         }
 
@@ -160,7 +183,7 @@ namespace Game_map_and_player
             //MENU right side approach2
             WindowHeight = 22; // 20
             WindowWidth = 40; //30 
-            // setting everything with white spaces first
+                              // setting everything with white spaces first
             for (int i = 0; i < 22; i++)
             {
                 SetCursorPosition(23, i);
@@ -335,7 +358,7 @@ namespace Game_map_and_player
                             {
                                 CurrentPlayer.Shoot(false, range);
                                 shootInVoid = false;
-                                i = shootRangeMax;
+                                i = shootRangeMax; //exit FOR loop
                             }
 
                             // shooting monster if there is one
@@ -352,7 +375,7 @@ namespace Game_map_and_player
                                         monsters.Remove(var);
                                     }
                                 }
-                                i = shootRangeMax;
+                                i = shootRangeMax; //exit FOR loop
                             }
                         }
                         // shooting full range when nothing is in the way
@@ -368,7 +391,7 @@ namespace Game_map_and_player
         }
         private void RunGameLoop()
         {
-            displayIntro();
+            DisplayIntro();
             Clear();
             Console.BackgroundColor = ConsoleColor.White;
 
@@ -376,12 +399,13 @@ namespace Game_map_and_player
             {
                 //1. Draw everything
                 DrawFrame();
+
                 //2. Check input player + move avatar
                 HandlePlayerInput();
+
                 //3. let monsters move or shoot 
                 HandleMonsters();
-                // if monster op playerposition, decrease lives player
-
+                // if monster at playerposition, decrease lives player and return current player to start position
                 if (MyWorld.GetMonsterAt(CurrentPlayer.X, CurrentPlayer.Y, monsters) != " ")
                 {
                     CurrentPlayer.PlayerLives--;
@@ -389,56 +413,23 @@ namespace Game_map_and_player
                     CurrentPlayer.Y = 9;
                 }
 
-                //4. Check if game has to end and if so play animation and suggest to play again
+                //4. Check if game has to end and if so play correct animation and suggest to play again
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid
                 //WIN PART
                 if (elementAtPlayerPos == "░")
                 {
-                    displayOutro();
-
-                    Console.CursorVisible = true;
-                    Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
-
-                    string toEndOrNot = Console.ReadLine();
-                    if (toEndOrNot == "y" || toEndOrNot == "Y")
-                    {
-                        // set playersposition back to origin and continue while loop
-                        // monsters posities blijven onverandert, dit moet anders met new game object.
-                        CurrentPlayer.X = 1;
-                        CurrentPlayer.Y = 9;
-                        Console.CursorVisible = false;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Thanks for playing, cu soon !");
-                        break;
-                    }
+                    DisplayOutro();
+                    DisplayExit();
+                   // break;
                 }
                 //LOOSE PART
                 if (CurrentPlayer.PlayerLives < 1)
                 {
-                    displayOutroFail();
-                    
-                    Console.CursorVisible = true;
-                    Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
-
-                    string toEndOrNot = Console.ReadLine();
-                    if (toEndOrNot == "y" || toEndOrNot == "Y")
-                    {
-                        // set playersposition back to origin and continue while loop
-                        // monsters posities blijven onverandert, dit moet anders met new game object.
-                        CurrentPlayer.X = 1;
-                        CurrentPlayer.Y = 9;
-                        Console.CursorVisible = false;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Thanks for playing, cu soon !");
-                        break;
-                    }
+                    DisplayOutroFail();
+                    DisplayExit();
+                    //break;
                 }
+
                 //5. Give Console time to render
                 System.Threading.Thread.Sleep(50);
             }
