@@ -235,48 +235,47 @@ namespace Game_map_and_player
                         for (int i = 0; i <= shootRangeMax; i++)
                         {
                             int range = i - 1;
-                            bool killedOne = false;
-                           // i = shootRangeMax;
-                            string elementInFrontPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X + i, CurrentPlayer.Y); //get a copy of players position in Grid
+                            bool killedSomething = false;
+
+                            string mapElementInFrontPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X + i, CurrentPlayer.Y); //get a copy of players position in Grid
                             string monsterInFrontPlayerPos = MyWorld.GetMonsterAt(CurrentPlayer.X + i, CurrentPlayer.Y, monsters);
-                            
-                            if (elementInFrontPlayerPos != " ")
-                            {
-                                if (elementInFrontPlayerPos == "☻" || elementInFrontPlayerPos == "¤")
-                                {
-                                    CurrentPlayer.Shoot(true, range);
-                                    shootInVoid = false;
-                                }
-                                // check for any monster
 
-                                else
-                                {
-                                    CurrentPlayer.Shoot(false, range);
-                                    shootInVoid = false;
-                                }
-
-                            }
-                            else if (elementInFrontPlayerPos == " ")
+                            // shooting monster
+                            if (monsterInFrontPlayerPos != " ")
                             {
-                                foreach (Monster var in monsters)
-                                {
-                                    if (var.Y == CurrentPlayer.Y && var.X == CurrentPlayer.X + range && killedOne == false)
-                                    {
-                                        //Console.WriteLine(var.X + " " + var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
-                                        CurrentPlayer.Shoot(true, range-1);
-                                        killedOne = true;
-                                        range = shootRangeMax;
-                                        shootInVoid = false;
-                                        var.MonsterColor = ConsoleColor.Black;
-                                    }
-                                   
-                                }
+                                CurrentPlayer.Shoot(true, range);
+                                shootInVoid = false;
+                                i = shootRangeMax;
+                                //killedSomething = true;
+                                //var.MonsterColor = ConsoleColor.Black; == DIE methode toevoegen aan monsters
                             }
+                            // not shooting through map elements
+                            else if (mapElementInFrontPlayerPos != " ")
+                            {
+                                CurrentPlayer.Shoot(true, range);
+                                shootInVoid = false;
+                                i = shootRangeMax;
+                            }
+                            // shooting full range when nothing is in the way
+                            else if (shootInVoid == true)
+                            {
+                                CurrentPlayer.Shoot(false, shootRangeMax);
+                                i = shootRangeMax;
+                            }
+
+
+
+                            //if (mapElementInFrontPlayerPos == "☻" || mapElementInFrontPlayerPos == "¤")
+                            //{
+                            //    CurrentPlayer.Shoot(true, range);
+                            //    shootInVoid = false;
+                            //}
+
+
                         }
-                        if (shootInVoid == true)
-                        {
-                            CurrentPlayer.Shoot(false, shootRangeMax);
-                        }
+
+
+
                     }
                     break;
                 default:
