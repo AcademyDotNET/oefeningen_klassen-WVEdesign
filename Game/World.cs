@@ -19,11 +19,7 @@ namespace Game_map_and_player
 
         }
         
-        public void DrawConsole()
-        {
-            Console.WindowHeight = Rows; // 20
-            Console.WindowWidth = Cols; //30 
-        }
+        
 
         public void Draw()
         {

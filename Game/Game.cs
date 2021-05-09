@@ -75,10 +75,7 @@ namespace Game_map_and_player
             monsters.Add(monster4);
             monsters.Add(monster5);
 
-            //foreach(Monster var in monsters)
-            //{
-            //    Console.WriteLine(var.X +" "+ var.Y + " " + var.MonsterAvatar + " " + var.MonsterColor);
-            //}
+            
 
 
             RunGameLoop();
@@ -100,8 +97,7 @@ namespace Game_map_and_player
             Console.ResetColor();
             Console.ReadKey(true);
             Console.CursorVisible = false;
-
-
+            Console.Clear();
         }
         private void displayOutro()
         {
@@ -126,21 +122,83 @@ namespace Game_map_and_player
 
                 System.Threading.Thread.Sleep(100); // was 20
             }
-
-            //Console.WriteLine("\nDruk op een toets om het spel te sluiten.");
-            //Console.ReadKey(true);
         }
 
         private void DrawFrame()
         {
             //Clear();
-
+            // Console(DrawInterface) tekenen voor scoreboard (in Game steken zoals intro en outro)
+            DrawInterface();
             MyWorld.Draw();
             CurrentPlayer.Draw();
             DrawAllMonsters();
-
         }
 
+        private void DrawInterface()
+        {
+            BackgroundColor = ConsoleColor.White;
+            ForegroundColor = ConsoleColor.DarkBlue;
+            //MENU right side approach2
+            WindowHeight = 22; // 20
+            WindowWidth = 40; //30 
+            int n = 0;
+            ForegroundColor = ConsoleColor.DarkRed;
+            SetCursorPosition(23, n); Write("            ♥♥♥  "); n++;
+            ForegroundColor = ConsoleColor.DarkBlue;
+            SetCursorPosition(23, n); Write("     |||||       "); n++;
+            SetCursorPosition(23, n); Write("     (⌐`_´)      "); n++;
+            SetCursorPosition(23, n); Write("    <,►╦╤─       "); n++;
+            SetCursorPosition(23, n); Write("     _/ \\_       ");n++;
+            SetCursorPosition(23, n); Write("  -------------  ");n++;
+            SetCursorPosition(23, n); Write("  >GOD-mode ON<  ");       
+            for (int i = 0; i < 15; i++)
+            {
+                SetCursorPosition(23, i+7);
+                Write("                  ");
+            }
+            int m = 0;
+            foreach(Monster var in monsters)
+            {
+                SetCursorPosition(25, m + 8);
+                m++;
+                Console.Write(var.MonsterNaam+": ");
+                SetCursorPosition(25, m + 8);
+                m++;
+                ForegroundColor = ConsoleColor.Black;
+                Console.Write(var.MonsterAvatar + " x=" + var.X + " y=" + var.Y);
+                ForegroundColor = ConsoleColor.DarkBlue;
+            }
+
+
+            //MENU right side approach1
+            //Console.WindowHeight = 22; // 20
+            //Console.WindowWidth = 40; //30 
+            //Console.SetCursorPosition(0, 0);
+            //var margin = "".PadLeft(23);
+            //Console.WriteLine(margin + "                  ");
+            //Console.WriteLine(margin + "      |||||       ");
+            //Console.WriteLine(margin + "      (⌐`_´)      ");
+            //Console.WriteLine(margin + "     <,►╦╤─       ");
+            //Console.WriteLine(margin + "      _/ \\_       ");
+            //Console.WriteLine(margin + "                  ");
+            //for (int i = 0; i < 16; i++)
+            //{
+            //    Console.WriteLine(margin + "                  ");
+            //}
+
+            //MENU down side
+            //Console.WindowHeight = 28; // 20
+            //Console.WindowWidth = 23; //30 
+            //Console.SetCursorPosition(0, 22);
+            //var margin = "".PadLeft(5);
+            //Console.WriteLine(margin + "                  ");
+            //Console.WriteLine(margin + "      |||||       ");
+            //Console.WriteLine(margin + "      (⌐`_´)      ");
+            //Console.WriteLine(margin + "     <,►╦╤─       ");
+            //Console.WriteLine(margin + "      _/ \\_       ");
+            //Console.WriteLine(margin + "                  ");
+
+        }
         private void DrawAllMonsters()
         {
             foreach (Monster var in monsters)
@@ -252,10 +310,9 @@ namespace Game_map_and_player
                             {
                                 CurrentPlayer.Shoot(true, range);
                                 shootInVoid = false;
-                                
+
                                 foreach (Monster var in monsters.ToList())
                                 {
-                                    // monster op monsterplaats
                                     if (var.MonsterNaam == monsterInFrontPlayerPos)
                                     {
                                         var.Die(); // animation
@@ -279,7 +336,9 @@ namespace Game_map_and_player
         private void RunGameLoop()
         {
             displayIntro();
-            MyWorld.DrawConsole();
+            Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+
             while (true)
             {
                 //1. Draw everything
@@ -305,7 +364,7 @@ namespace Game_map_and_player
                         CurrentPlayer.X = 1;
                         CurrentPlayer.Y = 9;
                         Console.CursorVisible = false;
-                        MyWorld.DrawConsole();
+
                     }
                     else
                     {
