@@ -234,19 +234,16 @@ namespace Game_map_and_player
                         for (int i = 0; i <= shootRangeMax; i++)
                         {
                             int range = i - 1;
-                            //bool killedSomething = false;
                             shootInVoid = true;
-
                             string mapElementInFrontPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X + i, CurrentPlayer.Y); //get a copy of players position in Grid
                             string monsterInFrontPlayerPos = MyWorld.GetMonsterAt(CurrentPlayer.X + i, CurrentPlayer.Y, monsters);
 
-                            // shooting monster
+                            // shooting monster if there is one
                             if (monsterInFrontPlayerPos != " ")
                             {
                                 CurrentPlayer.Shoot(true, range);
                                 shootInVoid = false;
                                 i = shootRangeMax;
-                                //killedSomething = true;
                                 //var.MonsterColor = ConsoleColor.Black; == DIE methode toevoegen aan monsters
                             }
 
@@ -257,20 +254,12 @@ namespace Game_map_and_player
                                 shootInVoid = false;
                                 i = shootRangeMax;
                             }
-
-                            //if (mapElementInFrontPlayerPos == "☻" || mapElementInFrontPlayerPos == "¤")
-                            //{
-                            //    CurrentPlayer.Shoot(true, range);
-                            //    shootInVoid = false;
-                            //}
                         }
                         // shooting full range when nothing is in the way
                         if (shootInVoid == true)
                         {
                             CurrentPlayer.Shoot(false, shootRangeMax);
                         }
-
-
                     }
                     break;
                 default:
