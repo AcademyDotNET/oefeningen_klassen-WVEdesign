@@ -60,23 +60,17 @@ namespace Game_map_and_player
             //currentPlayer.Draw();
             CurrentPlayer = new Player(1, 9);
 
-            monster1 = new Monster("monster1", 17, 11, "☻", ConsoleColor.Red);
+            monster1 = new Monster("monster1", 7, 2, "☻", ConsoleColor.Red);
             monster2 = new Monster("monster2", 17, 12, "☻", ConsoleColor.Red);
-            monster3 = new Monster("monster3", 17, 13, "☻", ConsoleColor.Red);
-            monster4 = new Monster("monster4", 14, 14, "¤", ConsoleColor.DarkRed);
-            monster5 = new Monster("monster5", 15, 14, "¤", ConsoleColor.DarkRed);
-
-            //charmap windows font consolas
-            //Console.WriteLine("☺☻╣╝×¹²³«»╠╣═║‡†∞∩≈↑→↓↔↕↨∑←⌂▓▒░▌☼♦♥♣♠╔╗╬╚╝§¤¶");
+            monster3 = new Monster("monster3", 2, 18, "☻", ConsoleColor.Red);
+            monster4 = new Monster("monster4", 14, 9, "¤", ConsoleColor.DarkRed);
+            monster5 = new Monster("monster5", 4, 14, "¤", ConsoleColor.DarkRed);
 
             monsters.Add(monster1);
             monsters.Add(monster2);
             monsters.Add(monster3);
             monsters.Add(monster4);
             monsters.Add(monster5);
-
-            
-
 
             RunGameLoop();
         }
@@ -103,10 +97,11 @@ namespace Game_map_and_player
         {
             Console.WindowHeight = 22; // 20
             Console.WindowWidth = 85; //30
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
             for (int j = 0; j < 20; j++)
             {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.Clear();
 
                 Console.WriteLine();
@@ -124,10 +119,34 @@ namespace Game_map_and_player
             }
         }
 
+        private void displayOutroFail()
+        {
+            Console.WindowHeight = 22; // 20
+            Console.WindowWidth = 85; //30
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
+            for (int j = 0; j < 20; j++)
+            {
+                Console.Clear();
+
+                Console.WriteLine();
+                var margin = "".PadLeft(j);
+                Console.WriteLine(margin + "           _                                ");
+                Console.WriteLine(margin + "          ▒∩░                               ");
+                Console.WriteLine(margin + "         ▓▒░▒▌                |||||         ");
+                Console.WriteLine(margin + "          ▓▒▓░░               (⌐´_`)        ");
+                Console.WriteLine(margin + "         ▓▒▓▒▒▒               |,  />        ");
+                Console.WriteLine(margin + "       ▓▒▓▒░ ░▒              _/ \\_         ");
+                Console.WriteLine("     -------------------------------------------------------- ");
+                Console.WriteLine("\n\n\n                       You Lost !!                      ");
+
+                System.Threading.Thread.Sleep(100); // was 20
+            }
+        }
+
         private void DrawFrame()
         {
-            //Clear();
-            // Console(DrawInterface) tekenen voor scoreboard (in Game steken zoals intro en outro)
             DrawInterface();
             MyWorld.Draw();
             CurrentPlayer.Draw();
@@ -141,31 +160,45 @@ namespace Game_map_and_player
             //MENU right side approach2
             WindowHeight = 22; // 20
             WindowWidth = 40; //30 
-            int n = 0;
-            ForegroundColor = ConsoleColor.DarkRed;
-            SetCursorPosition(23, n); Write("            ♥♥♥  "); n++;
-            ForegroundColor = ConsoleColor.DarkBlue;
-            SetCursorPosition(23, n); Write("     |||||       "); n++;
-            SetCursorPosition(23, n); Write("     (⌐`_´)      "); n++;
-            SetCursorPosition(23, n); Write("    <,►╦╤─       "); n++;
-            SetCursorPosition(23, n); Write("     _/ \\_       ");n++;
-            SetCursorPosition(23, n); Write("  -------------  ");n++;
-            SetCursorPosition(23, n); Write("  >GOD-mode ON<  ");       
-            for (int i = 0; i < 15; i++)
+            // setting everything with white spaces first
+            for (int i = 0; i < 22; i++)
             {
-                SetCursorPosition(23, i+7);
+                SetCursorPosition(23, i);
                 Write("                  ");
             }
-            int m = 0;
-            foreach(Monster var in monsters)
+            // writing InterfaceConsole
+            int lineNr = 0;
+            ForegroundColor = ConsoleColor.DarkGreen;
+            SetCursorPosition(23, lineNr);
+            Write("             ");
+            for (int i = 0; i < CurrentPlayer.PlayerLives; i++)
             {
-                SetCursorPosition(25, m + 8);
-                m++;
-                Console.Write(var.MonsterNaam+": ");
-                SetCursorPosition(25, m + 8);
-                m++;
+                Write("☺");
+            }
+            ForegroundColor = ConsoleColor.DarkBlue;
+            lineNr++;
+            SetCursorPosition(23, lineNr); Write("     |||||       "); lineNr++;
+            SetCursorPosition(23, lineNr); Write("     (⌐`_´)      "); lineNr++;
+            SetCursorPosition(23, lineNr); Write("    <,►╦╤─       "); lineNr++;
+            SetCursorPosition(23, lineNr); Write("     _/ \\_       "); lineNr++;
+            SetCursorPosition(23, lineNr); Write("  -------------  "); lineNr++;
+            //ForegroundColor = ConsoleColor.DarkRed;
+            //BackgroundColor = ConsoleColor.Yellow;
+            ////SetCursorPosition(25, lineNr); Write(">GOD-mode ON<"); lineNr++;
+            //ForegroundColor = ConsoleColor.DarkBlue;
+            //BackgroundColor = ConsoleColor.White;
+            SetCursorPosition(25, lineNr); Write("          "); lineNr++;
+            lineNr++;
+
+            foreach (Monster var in monsters)
+            {
+                SetCursorPosition(25, lineNr); lineNr++;
+                Console.Write(var.MonsterNaam + ": ");
+                ForegroundColor = var.MonsterColor;
+                Console.Write(var.MonsterAvatar);
+                SetCursorPosition(25, lineNr); lineNr++;
                 ForegroundColor = ConsoleColor.Black;
-                Console.Write(var.MonsterAvatar + " x=" + var.X + " y=" + var.Y);
+                Console.Write("x=" + var.X + " y=" + var.Y);
                 ForegroundColor = ConsoleColor.DarkBlue;
             }
 
@@ -347,12 +380,46 @@ namespace Game_map_and_player
                 HandlePlayerInput();
                 //3. let monsters move or shoot 
                 HandleMonsters();
+                // if monster op playerposition, decrease lives player
+
+                if (MyWorld.GetMonsterAt(CurrentPlayer.X, CurrentPlayer.Y, monsters) != " ")
+                {
+                    CurrentPlayer.PlayerLives--;
+                    CurrentPlayer.X = 1;
+                    CurrentPlayer.Y = 9;
+                }
+
                 //4. Check if game has to end and if so play animation and suggest to play again
                 string elementAtPlayerPos = MyWorld.GetElementAt(CurrentPlayer.X, CurrentPlayer.Y); //get a copy of players position in Grid
+                //WIN PART
                 if (elementAtPlayerPos == "░")
                 {
                     displayOutro();
 
+                    Console.CursorVisible = true;
+                    Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
+
+                    string toEndOrNot = Console.ReadLine();
+                    if (toEndOrNot == "y" || toEndOrNot == "Y")
+                    {
+                        // set playersposition back to origin and continue while loop
+                        // monsters posities blijven onverandert, dit moet anders met new game object.
+                        CurrentPlayer.X = 1;
+                        CurrentPlayer.Y = 9;
+                        Console.CursorVisible = false;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Thanks for playing, cu soon !");
+                        break;
+                    }
+                }
+                //LOOSE PART
+                if (CurrentPlayer.PlayerLives < 1)
+                {
+                    displayOutroFail();
+                    
                     Console.CursorVisible = true;
                     Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
 

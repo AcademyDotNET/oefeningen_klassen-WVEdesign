@@ -16,10 +16,7 @@ namespace Game_map_and_player
             Grid = grid;
             Rows = Grid.GetLength(0); // Y-as
             Cols = Grid.GetLength(1); // X-as
-
         }
-        
-        
 
         public void Draw()
         {
@@ -59,7 +56,6 @@ namespace Game_map_and_player
                 }
             }
         }
-
         public string GetElementAt(int x, int y)
         {
             return Grid[y, x];

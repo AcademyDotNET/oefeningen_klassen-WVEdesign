@@ -9,6 +9,7 @@ namespace Game_map_and_player
         public int Y { get; set; }
         public int X { get; set; }
         private string PlayerAvatar;
+        public int PlayerLives;
         private ConsoleColor PlayerColor;
 
         public Player(int initialX, int initialY)
@@ -17,6 +18,7 @@ namespace Game_map_and_player
             Y = initialY;
             //Console.WriteLine("       Rechts bewegen: ☺→    , Links bewegen: ¬☺");
             PlayerAvatar = "☺";
+            PlayerLives = 3;
             PlayerColor = ConsoleColor.DarkGreen;
             
         }

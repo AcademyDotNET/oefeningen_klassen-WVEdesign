@@ -7,9 +7,9 @@ using System.Text;
 //             "░" gebruiken om naar de volgende level te gaan.
 //
 //          - 1.a., schieten van player == OK, nog functie toevoegen die scant of op bepaalde positie monsterobject staat en
-//                // dit terug geeft == OK., alsook leven verwijderd van object tot het dood is.
-//          - 1.b., Monsters player laten opeten + player terug op originele positie laten beginnen.
-//          - 3. levens toevoegen dat player kan doodgaan(verliezen)+score
+//                // dit terug geeft == OK., alsook leven verwijderd van object tot het dood is. == OK
+//          - 1.b., Monsters player laten opeten == OK + player terug op originele positie laten beginnen.
+//          - 1.c.. levens toevoegen dat player kan doodgaan(verliezen) == OK +score
 //
 //          - Klasse Monster, .naam == OK + en .levens ♥♥♥ [10]
 //          - Child klasse maken van Monster naar RockDestroyer ??
