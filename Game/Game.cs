@@ -73,6 +73,7 @@ namespace Game_map_and_player
             monsters.Add(monster5);
 
             RunGameLoop();
+
         }
         private void DisplayIntro()
         {
@@ -143,28 +144,6 @@ namespace Game_map_and_player
                 Console.WriteLine("\n\n\n                           You Lost !!                      ");
 
                 System.Threading.Thread.Sleep(100); // was 20
-            }
-        }
-
-        private void DisplayExit()
-        {
-
-            Console.CursorVisible = true;
-            Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
-
-            string toEndOrNot = Console.ReadLine();
-            if (toEndOrNot == "y" || toEndOrNot == "Y")
-            {
-                // set playersposition back to origin and continue while loop
-                // monsters posities blijven onverandert, dit moet anders met new game object.
-                CurrentPlayer.PlayerLives = 3;
-                CurrentPlayer.X = 1;
-                CurrentPlayer.Y = 9;
-                Console.CursorVisible = false;
-            }
-            else
-            {
-                Console.WriteLine("Thanks for playing, cu soon !");
             }
         }
 
@@ -369,6 +348,7 @@ namespace Game_map_and_player
                                 CurrentPlayer.Shoot(true, range);
                                 shootInVoid = false;
 
+
                                 foreach (Monster var in monsters.ToList())
                                 {
                                     if (var.MonsterNaam == monsterInFrontPlayerPos)
@@ -426,15 +406,13 @@ namespace Game_map_and_player
                 if (elementAtPlayerPos == "░")
                 {
                     DisplayOutro();
-                    DisplayExit();
-                    // break;
+                    break;
                 }
                 //LOOSE PART
                 if (CurrentPlayer.PlayerLives < 1)
                 {
                     DisplayOutroFail();
-                    DisplayExit();
-                    //break;
+                    break;
                 }
 
                 //5. Give Console time to render

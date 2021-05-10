@@ -17,18 +17,46 @@ using System.Text;
 //
 //          - Infoboard onderaan(of rechts)==OK, player en monsters met levens en coordinaten, killed bool? Extra: tijd opmeting,
 //             levelnr, score.
-//          - herstarten van new game en stop game op basis van game object toevoegen
+//          - herstarten van new game en stop game op basis van game object toevoegen = OK
 //          - Top 10 High Score board invoegen met Name entry enkel wanneer er een nieuwe high score is.
 //          - Stylesheet integreren in code met klasse Css.cs (consolekleuren ed...)
 
 namespace Game_map_and_player
 {
-    class Program  
+    class Program
     {
         static void Main(string[] args)
         {
             Game currentGame = new Game();
-            currentGame.Start();
+            startNewGameOrQuit(currentGame, false);
+        }
+
+        private static void startNewGameOrQuit(Game currentGame, bool resetGame)
+        {
+            if (resetGame)
+            {
+                Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
+                Console.SetCursorPosition(25, 16);
+                Console.CursorVisible = true; string toEndOrNot = Console.ReadLine();
+                
+                if (toEndOrNot == "y" || toEndOrNot == "Y")
+                {
+                    currentGame = null;
+                    currentGame = new Game();
+                    currentGame.Start();
+                    startNewGameOrQuit(currentGame, true);
+                }
+                else
+                {
+                    Console.WriteLine("Thanks for playing, cu soon !");
+                }
+            }
+            else
+            {
+                Console.CursorVisible = false;
+                currentGame.Start();
+                startNewGameOrQuit(currentGame, true);
+            }
         }
     }
 }
