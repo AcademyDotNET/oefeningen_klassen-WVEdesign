@@ -310,6 +310,8 @@ namespace Game_map_and_player
 
         private void HandlePlayerInput()
         {
+            //if (KeyAvailable)
+            //{
             ConsoleKey key;
             //ontdendering (debouncing) Keyboard inputs
             do
@@ -388,6 +390,11 @@ namespace Game_map_and_player
                 default:
                     break;
             }
+            //}
+            //else
+            //{
+
+            //}
         }
         private void RunGameLoop()
         {
@@ -420,7 +427,7 @@ namespace Game_map_and_player
                 {
                     DisplayOutro();
                     DisplayExit();
-                   // break;
+                    // break;
                 }
                 //LOOSE PART
                 if (CurrentPlayer.PlayerLives < 1)
@@ -431,7 +438,7 @@ namespace Game_map_and_player
                 }
 
                 //5. Give Console time to render
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(10);
             }
         }
     }
