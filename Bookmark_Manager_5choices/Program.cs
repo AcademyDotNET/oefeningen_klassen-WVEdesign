@@ -92,9 +92,9 @@ namespace Bookmark_Manager_Hidden
             int keuze = AskAction(sites, "openen");
 
             sites[keuze].OpenSite();
-            
-            
-            
+
+
+
         }
 
         private static void ShowAll(List<BookMark> sites)

@@ -35,7 +35,7 @@ namespace Bankmanager
 
         }
         //Payinfunds
-        public void PayInFunds (double bedrag)
+        public void PayInFunds(double bedrag)
         {
 
         }

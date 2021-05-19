@@ -11,7 +11,7 @@ namespace Student_Organizer
             Console.WriteLine($"\nWelkom op de StudentOrganizer. \n\nEnter choice: Invoer Nieuwe Student[1]\nToon alle Studenten[2]\nExit[3]");
             Console.ForegroundColor = ConsoleColor.Gray;
 
-         
+
 
 
             int stap = 1;

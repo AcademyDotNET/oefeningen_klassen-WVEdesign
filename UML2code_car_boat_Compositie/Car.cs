@@ -6,11 +6,11 @@ namespace UML2code_car_boat_Compositie
 {
     class Car
     {
-       public string Name { get; set; }
-       public Wheel MyWheels { get; set; }
-       public Engine MyEngins { get; set; }
+        public string Name { get; set; }
+        public Wheel MyWheels { get; set; }
+        public Engine MyEngins { get; set; }
 
-       public Car()
+        public Car()
         {
             MyWheels = new Wheel();
 

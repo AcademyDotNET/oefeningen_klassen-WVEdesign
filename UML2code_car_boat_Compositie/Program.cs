@@ -9,8 +9,8 @@ namespace UML2code_car_boat_Compositie
             // https://learn.dotnetacademy.be/unit/view/id:6719
             // http://www.jot.fm/issues/issue_2004_11/column5/
 
-            
-            
+
+
             //Car ford = new Car();
             //ford.Name = "Mondeo";
             //ford.MyWheels.Aantal = 4;

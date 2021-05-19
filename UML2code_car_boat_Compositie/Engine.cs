@@ -18,7 +18,7 @@ namespace UML2code_car_boat_Compositie
 
             MyPistons = new Piston[4];
 
-            for (int i = 0; i<4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 MyPistons[i] = new Piston();
             }

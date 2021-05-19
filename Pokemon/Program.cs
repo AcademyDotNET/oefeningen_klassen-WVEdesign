@@ -17,12 +17,12 @@ namespace Pokemon
             //Level - up tester
             //Maak een kleine loop die je toelaat om per loop een bepaalde Pokemon z’n level met 1 te verhogen en vervolgens toon je dan z’n nieuwe stats.
             Console.WriteLine($"\nLevel: {ratata.Level}");
-            for (int i=0; i < 100; i++)
+            for (int i = 0; i < 100; i++)
             {
                 ratata.VerhoogLevel();
             }
             Console.WriteLine($"Level: {ratata.Level}");
-            
+
             PrintPokemonStats(ratata);
             PrintPokemonStats(weedle);
             PrintPokemonStats(kakuna);
@@ -40,7 +40,7 @@ namespace Pokemon
 
             pokemonNewName.Naam = naam;
 
-            pokemonNewName.HP_Base = pokemonR.Next(0,101);
+            pokemonNewName.HP_Base = pokemonR.Next(0, 101);
             pokemonNewName.Attack_Base = pokemonR.Next(0, 101);
             pokemonNewName.Defense_Base = pokemonR.Next(0, 101);
             pokemonNewName.SpecialAttack_Base = pokemonR.Next(0, 101);

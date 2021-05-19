@@ -19,7 +19,10 @@ namespace Game_map_and_player
 
         private Random directionMonster = new Random();
 
-        // Player settings
+        // Player settings //
+        /////////////////////
+        const int startPosPlayerX = 1;
+        const int startPosPlayerY = 9;
         const int shootRangeMax = 8; // Player's max shooting range
         bool shootInVoid = true;  // bij true ook shoot animatie laten zien wanneer er niets in de weg staat
 
@@ -27,6 +30,20 @@ namespace Game_map_and_player
         {
             //WriteLine("Game is starting");
             Console.Title = "Save Mr. Smiley of Happy Evil Monsters";
+
+            CurrentPlayer = new Player(startPosPlayerX, startPosPlayerY);
+
+            monster1 = new Monster("monster1", 7, 2, "☻", ConsoleColor.Red);
+            monster2 = new Monster("monster2", 17, 12, "☻", ConsoleColor.Red);
+            monster3 = new Monster("monster3", 2, 18, "☻", ConsoleColor.Red);
+            monster4 = new Monster("monster4", 14, 9, "¤", ConsoleColor.DarkRed);
+            monster5 = new Monster("monster5", 4, 14, "¤", ConsoleColor.DarkRed);
+
+            monsters.Add(monster1);
+            monsters.Add(monster2);
+            monsters.Add(monster3);
+            monsters.Add(monster4);
+            monsters.Add(monster5);
 
             string[,] grid =
             {
@@ -53,31 +70,15 @@ namespace Game_map_and_player
                 {"║"," "," "," "," "," "," "," "," ","⌂"," "," "," "," "," "," "," "," "," "," "," ","░","║" },
                 {"╚","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","═","╝" },
             };
-            //World myWorld = new World(grid);   
-            //myWorld.Draw();
+
             MyWorld = new World(grid);
-            //Player currentPlayer = new Player(2, 2);
-            //currentPlayer.Draw();
-            CurrentPlayer = new Player(1, 9);
-
-            monster1 = new Monster("monster1", 7, 2, "☻", ConsoleColor.Red);
-            monster2 = new Monster("monster2", 17, 12, "☻", ConsoleColor.Red);
-            monster3 = new Monster("monster3", 2, 18, "☻", ConsoleColor.Red);
-            monster4 = new Monster("monster4", 14, 9, "¤", ConsoleColor.DarkRed);
-            monster5 = new Monster("monster5", 4, 14, "¤", ConsoleColor.DarkRed);
-
-            monsters.Add(monster1);
-            monsters.Add(monster2);
-            monsters.Add(monster3);
-            monsters.Add(monster4);
-            monsters.Add(monster5);
 
             RunGameLoop();
 
         }
         private void DisplayIntro()
         {
-            Console.WindowHeight = 22; // 20
+            Console.WindowHeight = 22;
             Console.WindowWidth = 85; //30
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -120,7 +121,6 @@ namespace Game_map_and_player
                 System.Threading.Thread.Sleep(100); // was 20
             }
         }
-
         private void DisplayOutroFail()
         {
             Console.WindowHeight = 22; // 20
@@ -286,7 +286,6 @@ namespace Game_map_and_player
                 }
             }
         }
-
         private void HandlePlayerInput()
         {
             //if (KeyAvailable)
@@ -376,6 +375,7 @@ namespace Game_map_and_player
 
             //}
         }
+
         private void RunGameLoop()
         {
             DisplayIntro();
@@ -392,12 +392,12 @@ namespace Game_map_and_player
 
                 //3. let monsters move or shoot 
                 HandleMonsters();
-                // if monster at playerposition, decrease lives player and return current player to start position
+                // if monster at playerposition, decrease player's lives and return current player to start position
                 if (MyWorld.GetMonsterAt(CurrentPlayer.X, CurrentPlayer.Y, monsters) != " ")
                 {
                     CurrentPlayer.PlayerLives--;
-                    CurrentPlayer.X = 1;
-                    CurrentPlayer.Y = 9;
+                    CurrentPlayer.X = startPosPlayerX;
+                    CurrentPlayer.Y = startPosPlayerY;
                 }
 
                 //4. Check if game has to end and if so play correct animation and suggest to play again

@@ -37,11 +37,12 @@ namespace Game_map_and_player
             {
                 Console.WriteLine("\n\n\n            Play Again? [Y]     , to Stop Hit any other key");
                 Console.SetCursorPosition(25, 16);
-                Console.CursorVisible = true; string toEndOrNot = Console.ReadLine();
-                
+                Console.CursorVisible = true;
+                string toEndOrNot = Console.ReadLine();
+
                 if (toEndOrNot == "y" || toEndOrNot == "Y")
                 {
-                    currentGame = null;
+                    //currentGame = null;
                     currentGame = new Game();
                     currentGame.Start();
                     startNewGameOrQuit(currentGame, true);

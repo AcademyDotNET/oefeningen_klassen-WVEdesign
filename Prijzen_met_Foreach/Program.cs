@@ -19,7 +19,7 @@ namespace Prijzen_met_Foreach
 
             for (int i = 0; i < prices.Length; i++)
             {
-                Console.WriteLine($"Enter price {i+1}:");
+                Console.WriteLine($"Enter price {i + 1}:");
                 prices[i] = Convert.ToDouble(Console.ReadLine());
             }
 

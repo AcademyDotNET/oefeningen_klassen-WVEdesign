@@ -6,6 +6,6 @@ namespace UML2code_car_boat_Compositie
 {
     class Piston
     {
-        
+
     }
 }

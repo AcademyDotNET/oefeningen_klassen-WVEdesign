@@ -5,7 +5,7 @@ using System.Text;
 namespace Ziekenhuis
 {
 
-    
+
     class Patient
     {
         public double totaalKost = 0;

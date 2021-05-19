@@ -6,7 +6,7 @@ namespace Pokemon
 {
     class Pokemon
     {
-       // 6 properties and 6 
+        // 6 properties and 6 
 
         //HP_Base
         //Attack_Base
@@ -36,9 +36,9 @@ namespace Pokemon
         //De Total-property geeft de som terug van de 6 basestats.Daar de base stats niet evolueren met het level veranderen dus Average en 
         //    Total ook niet van zodra de base-stats werden ingesteld, toch mag je beide statistieken steeds herberekenen in de get.
 
-        public double Average 
+        public double Average
         {
-            get 
+            get
             {
                 return (HP_Base + Attack_Base + Defense_Base + SpecialAttack_Base + SpecialDefense_Base + Speed_Base) / 6;
                 // == return Total /6;
@@ -194,7 +194,7 @@ namespace Pokemon
             Console.WriteLine($"* Speed = {Speed_Base}");
             Console.WriteLine("Full stats:");
             Console.WriteLine($"* Health = {HP_FULL}");
-           
+
 
         }
     }

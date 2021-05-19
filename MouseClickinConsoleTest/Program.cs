@@ -15,10 +15,10 @@ namespace ConsoleTools
         static public Point MousePos;
         static Button One = new Button();
         static Pixel Mouse = new Pixel();
-       
+
         static void Main(string[] args)
         {
-            
+
 
             Console.ForegroundColor = ConsoleColor.White;
             // t.Draw(10, 40, ConsoleColor.Gray);
@@ -26,11 +26,11 @@ namespace ConsoleTools
             Console.SetWindowSize(90, 50);
             Console.SetBufferSize(90, 80);
             Console.SetWindowPosition(0, 0);
-           
+
 
             GUI.Add(One);
             GUI.CalculateOnStart();
-            while(true)
+            while (true)
             {
                 MousePos = new Point(Control.MousePosition.X / (Console.LargestWindowWidth / 24), Control.MousePosition.Y / (Console.LargestWindowHeight / 7));
                 //Console.WriteLine($"X as = { Control.MousePosition.X} Y as = { Control.MousePosition.Y}" );

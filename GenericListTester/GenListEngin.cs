@@ -13,7 +13,7 @@ namespace GenericListTester
         {
             Items = itemIn;
         }
-       public void PrintList()
+        public void PrintList()
         {
             foreach (var item in Items)
             {
@@ -22,17 +22,17 @@ namespace GenericListTester
         }
         //treintjesint.Add(368);
 
-        
+
         public void RemoveOfListIndex(int itemIndex)
         {
             //if (Items.Contains(item))
             //{
-                Items.RemoveAt(itemIndex);
+            Items.RemoveAt(itemIndex);
             //}
             //Items.RemoveAt(itemIndex);
         }
 
-        public void Add2List( T itemValue)
+        public void Add2List(T itemValue)
         {
 
             Items.Add(itemValue);
@@ -40,9 +40,9 @@ namespace GenericListTester
 
         public T RequestOfListIndex(int itemIndex)
         {
-             
-                return Items[itemIndex];
+
+            return Items[itemIndex];
         }
-       
+
     }
 }

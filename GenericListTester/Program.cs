@@ -34,7 +34,7 @@ namespace GenericListTester
 
             m1.RemoveOfListIndex(2);
             m2.RemoveOfListIndex(1);
-           
+
             m1.PrintList();
             m2.PrintList();
 

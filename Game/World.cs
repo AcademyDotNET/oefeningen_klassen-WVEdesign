@@ -9,7 +9,6 @@ namespace Game_map_and_player
         private string[,] Grid;
         private int Rows;
         private int Cols;
-        public Monster monster;
 
         public World(string[,] grid)
         {
@@ -68,12 +67,11 @@ namespace Game_map_and_player
                 // monster op monsterplaats
                 if (var.X == x && var.Y == y)
                 {
-                    name =  var.MonsterNaam ;
+                    name = var.MonsterNaam;
                 }
             }
             return name;
         }
-
         public bool IsPositionFree(int x, int y, List<Monster> monsters)
         {
             // monsters

@@ -19,7 +19,7 @@ namespace Pokemon_Deel1_3_BattleTester
             string inputKeyString;
             do
             {
-                
+
 
                 Console.WriteLine($"Press any key to continue. (enter \'stop\' to end game) ");
                 inputKeyString = Console.ReadLine();
@@ -139,7 +139,7 @@ namespace Pokemon_Deel1_3_BattleTester
 
                 int pokeFirst = poke1.HP_Base;
                 int pokeSec = poke2.HP_Base;
-                
+
                 // int pokeFirst = (int)poke1.Average;
                 //int pokeSec = (int)poke2.Average;
 

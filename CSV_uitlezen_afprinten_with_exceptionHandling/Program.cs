@@ -14,14 +14,14 @@ namespace CSV_uitlezen_afprinten_with_exceptionHandling
             System.Net.WebClient wc = new System.Net.WebClient();
             try
             {
-                 csv = wc.DownloadString(URL);
+                csv = wc.DownloadString(URL);
             }
             catch (Exception errorDownloadstring)
             {
                 Debug.WriteLine(errorDownloadstring.Message);
                 Console.WriteLine(errorDownloadstring.Message);
             }
-               
+
             string[] splitted = csv.Split('\n');
 
             for (int i = 1; i < splitted.Length - 1; i++)
@@ -41,7 +41,7 @@ namespace CSV_uitlezen_afprinten_with_exceptionHandling
                 Console.WriteLine(error.Message);
                 Debug.WriteLine(error.Message);
             }
-            
+
             try
             {
                 CsvWriter.writeCsvStreamWriter();
@@ -51,7 +51,7 @@ namespace CSV_uitlezen_afprinten_with_exceptionHandling
                 Console.WriteLine(error.Message);
                 Debug.WriteLine(error.Message);
             }
-            
+
         }
     }
 

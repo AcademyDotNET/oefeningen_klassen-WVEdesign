@@ -5,7 +5,7 @@ public class Cat
     {
         instances++;
     }
-    public static void HowManyCats()             
+    public static void HowManyCats()
     {
         //Console.WriteLine("{0} cats adopted", instances);
         Console.WriteLine($"{Cat.instances} cats adopted");

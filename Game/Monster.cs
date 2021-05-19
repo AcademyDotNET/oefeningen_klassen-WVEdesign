@@ -12,7 +12,7 @@ namespace Game_map_and_player
         public string MonsterNaam { get; set; }
         public ConsoleColor MonsterColor { get; set; }
         
-        public Monster(string Naam,int initialX, int initialY, string avatarSymbol, ConsoleColor Color)
+        public Monster(string Naam, int initialX, int initialY, string avatarSymbol, ConsoleColor Color)
         {
             X = initialX;
             Y = initialY;
@@ -20,6 +20,7 @@ namespace Game_map_and_player
             MonsterColor = Color;
             MonsterNaam = Naam;
         }
+        
         public void Draw()
         {
             Console.ForegroundColor = MonsterColor;

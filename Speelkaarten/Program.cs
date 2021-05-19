@@ -52,8 +52,8 @@ namespace Speelkaarten
             //    dus je deck niet te schudden.
             Random random = new Random();
             int i = random.Next(1, speelkaarten.Count + 1);
-            
-            
+
+
             //geeft de kaart weer die verwijderd is geweest.
             Console.WriteLine(speelkaarten[i].Kleur + " " + speelkaarten[i].Nummer);
             speelkaarten.Remove(speelkaarten[i]);

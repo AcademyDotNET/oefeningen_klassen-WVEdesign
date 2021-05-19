@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Speelkaarten
 {
-       enum Suit
+    enum Suit
     {
         Schoppen = 1,
         Harten,

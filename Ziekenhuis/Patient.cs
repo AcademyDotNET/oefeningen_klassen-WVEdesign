@@ -7,7 +7,7 @@ namespace Ziekenhuis
     class Patient
     {
         public int totaalKost = 0;
-        
+
         public string Name { get; set; }
         public int AantalUur { get; set; }
 
@@ -26,5 +26,5 @@ namespace Ziekenhuis
             return totaalKost;
         }
     }
-   
+
 }
